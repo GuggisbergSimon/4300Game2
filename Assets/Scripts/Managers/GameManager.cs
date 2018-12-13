@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
 
 	private GameObject ball;
 	public GameObject Ball => ball;
+
+	public GameObject[] players;
 
 	private bool inLevel = false;
 
@@ -52,13 +55,16 @@ public class GameManager : MonoBehaviour
 		}
 
 		ball = GameObject.FindGameObjectWithTag("Ball");
+		players = GameObject.FindGameObjectsWithTag("Player");
 
 		//checks if inlevel
 		//TODO change method of check by player presence or something else
-		if (ball)
+		if (players.Length>0)
 		{
 			inLevel = true;
 		}
+
+		SortPlayers();
 	}
 
 	private void Update()
@@ -67,6 +73,34 @@ public class GameManager : MonoBehaviour
 		{
 			//DoSomething only in level
 		}
+	}
+
+	//check if players are not ordered correctly and order them if so
+	void SortPlayers()
+	{
+		if (inLevel && players[0].transform.position.x > players[1].transform.position.x)
+		{
+			var tmp = players[0];
+			players[0] = players[1];
+			players[1] = tmp;
+		}
+	}
+
+	public GameObject GetPlayer(playerNumber player)
+	{
+		if (player == playerNumber.Player1)
+		{
+			return players[0];
+		}
+		else
+		{
+			return players[1];
+		}
+	}
+
+	public void ChangeTimeScale(float timeScale)
+	{
+		Time.timeScale = timeScale;
 	}
 
 	public void LoadLevel(string nameLevel)
