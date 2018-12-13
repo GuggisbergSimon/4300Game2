@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: c367bbe5d0dd4684a8a7bed52de9d8fd
+=======
+guid: 0f6b72050ee0b824a9c4d5fdc1a17c78
+>>>>>>> Guillaume
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -331,7 +335,11 @@ TextureImporter:
       - {x: 0.1960288, y: 1.99037}
       - {x: 0.09812956, y: 1.9975911}
     bones: []
+<<<<<<< HEAD
     spriteID: ed6d1d0a66338394799af3e6d57d5e72
+=======
+    spriteID: 6a468287d987e8f4098db1c56e911529
+>>>>>>> Guillaume
     vertices: []
     indices: 
     edges: []
