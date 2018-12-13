@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
 	private bool inLevel = false;
 
+	//TODO delete that code if not needed
 	//That code is not being needed for the moment
 	/*private void OnEnable()
 	{
@@ -71,7 +72,7 @@ public class GameManager : MonoBehaviour
 	{
 		if (inLevel)
 		{
-			//DoSomething only in level
+			//TODO Something only in level
 		}
 	}
 
