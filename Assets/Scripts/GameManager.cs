@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
 
 	private bool inLevel = false;
 
-
-	private void OnEnable()
+	//That code is not being needed for the moment
+	/*private void OnEnable()
 	{
 		SceneManager.sceneLoaded += OnLevelFinishedLoadingScene;
 	}
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 	private void OnLevelFinishedLoadingScene(Scene scene, LoadSceneMode mode)
 	{
 		//Add code here
-	}
+	}*/
 
 	private void CheckEscape()
 	{
