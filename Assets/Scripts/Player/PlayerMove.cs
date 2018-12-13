@@ -8,12 +8,12 @@ public class PlayerMove : MonoBehaviour {
     [SerializeField]
     private Rigidbody2D playerRigidbody2D;
     [SerializeField]
-    private float playerMaxSpeed = 5.0f;
+    private float playerMaxSpeed = 14.0f;
     [SerializeField]
-    private float playerAcceleration = 50.0f;
+    private float playerAcceleration = 70.0f;
 
     [SerializeField]
-    private float playerJumpSpeed = 8.0f;
+    private float playerJumpSpeed = 20.0f;
     [SerializeField]
     private bool playerIsJumping = false;
 
