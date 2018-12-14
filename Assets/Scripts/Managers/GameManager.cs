@@ -51,16 +51,23 @@ public class GameManager : MonoBehaviour
 		if (players.Length > 0)
 		{
 			inLevel = true;
-			//adding players have to be done shortly after start and awake
-			Invoke("AddPlayers",0.5f);
+			StartCoroutine(AddPlayers());
 		}
 
 		SortPlayers();
 	}
 
-	private void AddPlayers()
+	private IEnumerator AddPlayers()
 	{
 		var inputDevices = InputManager.Devices;
+
+		//we have to check periodically wether all the requested devices have been recognised, or not
+		while (inputDevices == null || inputDevices.Count < 2)
+		{
+			yield return new WaitForSeconds(0.5f);
+			inputDevices = InputManager.Devices;
+		}
+
 		for (int i = 0; i < players.Length; i++)
 		{
 			players[i].GetComponent<PlayerMove>().AssignController(inputDevices[i]);
