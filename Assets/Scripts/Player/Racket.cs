@@ -31,11 +31,20 @@ public class Racket : MonoBehaviour {
 
     [SerializeField]
     private Ball ball;
+    [SerializeField]
+    private PlayerMove player;
 
     [SerializeField]
     private float racketRotationSpeed = 50.0f;
 
-	void Start ()
+    [SerializeField]
+    private float smashMaxCharge = 100.0f;
+    [SerializeField]
+    private float smashCurrentCharge = 0.0f;
+    [SerializeField]
+    private float amountOfChargeToSmash = 25.0f;
+
+    void Start ()
     {
         // TODO add gameManager method to change racketRotationSpeed
     }
@@ -46,7 +55,11 @@ public class Racket : MonoBehaviour {
 
 	void Update ()
     {
-        if (Input.GetButtonDown("Fire1") && !isHitting)
+        if()
+
+
+
+        if (player.GetController().Action2.WasPressed && !isHitting)
         {
             isChargingHit = true;
             gameObject.transform.Rotate(new Vector3(0.0f, 0.0f, 1.0f) * racketCounterRotation * hitSpeed * hitDuration);
@@ -57,7 +70,7 @@ public class Racket : MonoBehaviour {
             timeChargingHit += Time.deltaTime;
         }
 
-        if(Input.GetButtonUp("Fire1"))
+        if(player.GetController().Action2.WasReleased)
         {
             Debug.Log("Hitting");
             isChargingHit = false;

@@ -42,7 +42,7 @@ public class PlayerMove : MonoBehaviour {
 	
 	private void Update ()
     {
-        float horizontal = Input.GetAxis("Horizontal");
+        float horizontal = myController.LeftStickX;
 
         if(Math.Abs(playerRigidbody2D.velocity.x) <= playerMaxSpeed)
         {
@@ -53,7 +53,7 @@ public class PlayerMove : MonoBehaviour {
             playerRigidbody2D.velocity = playerNewVelocity;
         }
 
-        if (Input.GetButton("Jump") && !playerIsJumping)
+        if (myController.Action1.WasPressed && !playerIsJumping)
         {
             playerIsJumping = true;
             playerRigidbody2D.velocity += new Vector2 (0.0f, playerJumpSpeed);
@@ -66,5 +66,10 @@ public class PlayerMove : MonoBehaviour {
         {
             playerIsJumping = false;
         }
+    }
+
+    public InputDevice GetController()
+    {
+        return myController;
     }
 }
