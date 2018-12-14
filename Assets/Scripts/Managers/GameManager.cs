@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
 
 	private void Awake()
 	{
-		var inputDevices = InputManager.Devices;
 		//checks if another instance of GameManager exists, if so, destroy it, ensuring that only one GameManager exists at all time.
 		if (instance != null && instance != this)
 		{
@@ -49,20 +48,28 @@ public class GameManager : MonoBehaviour
 		MyMatchManager = GetComponent<MatchManager>();
 
 		//checks if inlevel through the presence of a player
-		if (players.Length>0)
+		if (players.Length > 0)
 		{
 			inLevel = true;
-			for (int i = 0; i < players.Length; i++)
-			{
-				players[i].GetComponent<PlayerMove>().AssignController(inputDevices[i]);
-			}
+			//adding players have to be done shortly after start and awake
+			Invoke("AddPlayers",0.5f);
 		}
 
 		SortPlayers();
 	}
 
+	private void AddPlayers()
+	{
+		var inputDevices = InputManager.Devices;
+		for (int i = 0; i < players.Length; i++)
+		{
+			players[i].GetComponent<PlayerMove>().AssignController(inputDevices[i]);
+		}
+	}
+
 	private void Update()
 	{
+
 		if (inLevel)
 		{
 			//TODO Something only in level
@@ -108,7 +115,6 @@ public class GameManager : MonoBehaviour
 
 	public void ChangeTimeScale(float timeScale)
 	{
-
 		Time.timeScale = timeScale;
 		myAudioManager.UpdateAudio();
 	}
