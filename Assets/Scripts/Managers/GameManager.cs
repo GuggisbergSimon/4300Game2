@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Remoting.Messaging;
+using InControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
 
 	private void Awake()
 	{
+		var inputDevices = InputManager.Devices;
 		//checks if another instance of GameManager exists, if so, destroy it, ensuring that only one GameManager exists at all time.
 		if (instance != null && instance != this)
 		{
@@ -50,6 +52,10 @@ public class GameManager : MonoBehaviour
 		if (players.Length>0)
 		{
 			inLevel = true;
+			for (int i = 0; i < players.Length; i++)
+			{
+				players[i].GetComponent<PlayerMove>().AssignController(inputDevices[i]);
+			}
 		}
 
 		SortPlayers();
