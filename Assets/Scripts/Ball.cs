@@ -82,7 +82,15 @@ public class Ball : MonoBehaviour
 			case "Racket":
 			{
 				PlayerMove player = collisionObject.GetComponentInParent<PlayerMove>();
-				lastPlayerHitting = player.PlayerNumber;
+				if (player.PlayerNumber != lastPlayerHitting)
+				{
+					lastPlayerHitting = player.PlayerNumber;
+				}
+				else
+				{
+					GameManager.Instance.MyMatchManager.AddPointTo(player.PlayerNumber.GetOpponent());
+				}
+
 				break;
 			}
 		}

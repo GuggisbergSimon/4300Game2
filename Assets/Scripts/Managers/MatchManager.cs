@@ -10,12 +10,6 @@ public class MatchManager : MonoBehaviour
 	private Vector2 engagePosition;
 	private Ball ball;
 
-	private Dictionary<playerNumber, int> score = new Dictionary<playerNumber, int>()
-	{
-		{playerNumber.Player1, 0},
-		{playerNumber.Player2, 0}
-	};
-
 	private void Start()
 	{
 		if (GameManager.Instance.InLevel)
@@ -40,7 +34,7 @@ public class MatchManager : MonoBehaviour
 
 	public void AddPointTo(playerNumber player)
 	{
-		score[player]++;
+		GameManager.Instance.Score[player]++;
 		Engage(player.GetOpponent());
 	}
 }

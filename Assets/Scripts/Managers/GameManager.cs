@@ -21,6 +21,18 @@ public class GameManager : MonoBehaviour
 	private bool inLevel = false;
 	public bool InLevel => inLevel;
 
+	private Dictionary<playerNumber, int> score = new Dictionary<playerNumber, int>()
+	{
+		{playerNumber.Player1, 0},
+		{playerNumber.Player2, 0}
+	};
+
+	public Dictionary<playerNumber, int> Score
+	{
+		get { return score; }
+		set { score = value; }
+	}
+
 	private void CheckEscape()
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
@@ -83,7 +95,7 @@ public class GameManager : MonoBehaviour
 		}
 
 		//TODO remove this test
-		if (Input.GetButtonDown("Fire1"))
+		/*if (Input.GetButtonDown("Fire1"))
 		{
 			ChangeTimeScale(0.0f);
 			MyMatchManager.AddPointTo(playerNumber.Player1);
@@ -93,7 +105,7 @@ public class GameManager : MonoBehaviour
 		else if (Input.GetButtonUp("Fire1"))
 		{
 			ChangeTimeScale(1.0f);
-		}
+		}*/
 	}
 
 	//check if players are not ordered correctly and order them if so
