@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
 	public GameObject[] players;
 
+	private AudioManager myAudioManager;
 	private bool inLevel = false;
 
 	//TODO delete that code if not needed
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
 
 		ball = GameObject.FindGameObjectWithTag("Ball");
 		players = GameObject.FindGameObjectsWithTag("Player");
+		myAudioManager = GetComponent<AudioManager>();
 
 		//checks if inlevel
 		//TODO change method of check by player presence or something else
@@ -73,6 +75,18 @@ public class GameManager : MonoBehaviour
 		if (inLevel)
 		{
 			//TODO Something only in level
+		}
+
+		//TEST
+		if (Input.GetButtonDown("Fire1"))
+		{
+			Time.timeScale = 0.5f;
+			myAudioManager.UpdateAudio();
+		}
+		else if (Input.GetButtonUp("Fire1"))
+		{
+			Time.timeScale = 1.0f;
+			myAudioManager.UpdateAudio();
 		}
 	}
 

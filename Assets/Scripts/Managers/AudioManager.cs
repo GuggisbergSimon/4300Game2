@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
-public class AudioManager : MonoBehaviour {
+public class AudioManager : MonoBehaviour
+{
+	[SerializeField] private AudioMixer generalMixer;
+
 	public void UpdateAudio()
 	{
-		//TODO Get TimeScale and apply effects to mixers
+		generalMixer.SetFloat("Pitch", Time.timeScale);
 	}
 }
