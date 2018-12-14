@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class MatchManager : MonoBehaviour
 {
-	//[SerializeField] private playerNumber playerStarting = playerNumber.Player1;
+	[SerializeField] private GameObject engagePositionObject;
+	[SerializeField] private playerNumber playerStarting = playerNumber.Player1;
+
+	private Vector2 engagePosition;
+	private Ball ball;
 
 	private Dictionary<playerNumber, int> score = new Dictionary<playerNumber, int>()
 	{
@@ -12,10 +16,26 @@ public class MatchManager : MonoBehaviour
 		{playerNumber.Player2, 0}
 	};
 
-	private void Engage(playerNumber player)
+	private void Start()
 	{
-		//moves the ball to somewhere and reset velocity/whatever
-		//TODO code that part, actually no idea how we want to do it
+		if (GameManager.Instance.InLevel)
+		{
+			engagePosition = engagePositionObject.transform.position;
+			ball = GameManager.Instance.Ball.GetComponent<Ball>();
+			Engage(playerStarting);
+		}
+	}
+
+	public void Engage(playerNumber player)
+	{
+		if (player == playerNumber.Player2)
+		{
+			StartCoroutine(ball.Setup(engagePosition));
+		}
+		else
+		{
+			StartCoroutine(ball.Setup(engagePosition * (Vector2.left + Vector2.up)));
+		}
 	}
 
 	public void AddPointTo(playerNumber player)

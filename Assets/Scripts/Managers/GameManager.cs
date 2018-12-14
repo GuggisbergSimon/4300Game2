@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 	public MatchManager MyMatchManager { get; private set; }
 
 	private bool inLevel = false;
+	public bool InLevel => inLevel;
 
 	private void CheckEscape()
 	{

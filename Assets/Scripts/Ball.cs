@@ -4,12 +4,24 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-	private playerNumber lastPlayerHitting;
+	[SerializeField] private float timeSetupNoFall = 1.5f;
+
+	private playerNumber lastPlayerHitting=playerNumber.Player1;
 	private Rigidbody2D myRigidbody2D;
 
 	public void SetVelocity(Vector2 velocity)
 	{
 		myRigidbody2D.velocity = velocity;
+	}
+
+	public IEnumerator Setup(Vector2 position)
+	{
+		float gravityScale = myRigidbody2D.gravityScale;
+		SetVelocity(Vector2.zero);
+		myRigidbody2D.gravityScale = 0.0f;
+		transform.position = position;
+		yield return new WaitForSeconds(timeSetupNoFall);
+		myRigidbody2D.gravityScale = gravityScale;
 	}
 
 	private void Start()
