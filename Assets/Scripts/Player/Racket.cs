@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using InControl;
+using System;
 
 public class Racket : MonoBehaviour {
 
@@ -11,8 +13,9 @@ public class Racket : MonoBehaviour {
 
 	void Start ()
     {
-		// TODO add gameManager method to change racketRotationSpeed
-	}
+      // gameObject.transform.forward = new Vector3(1.0f, 0.0f, 0.0f);
+        // TODO add gameManager method to change racketRotationSpeed
+    }
 	
     // Controller sets direction to the joystick's direction
 
@@ -23,8 +26,16 @@ public class Racket : MonoBehaviour {
         if (!isHitting)
         {
             float vertical = Input.GetAxis("Vertical");
+            var inputDevice = InputManager.ActiveDevice;
 
-            gameObject.transform.Rotate(transform.forward * Time.deltaTime * -vertical * racketRotationSpeed,Space.Self);
+            Vector3 racketDirection = new Vector3(inputDevice.RightStickX, inputDevice.RightStickY, 0.0f);
+            
+           // gameObject.transform.Rotate(transform.forward * Time.deltaTime * -vertical * racketRotationSpeed,Space.Self); // Keyboard control
+
+           if (racketDirection != Vector3.zero)
+           {
+                gameObject.transform.right = racketDirection;
+           } 
         }
 	}
 }
