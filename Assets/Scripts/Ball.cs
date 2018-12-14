@@ -61,4 +61,9 @@ public class Ball : MonoBehaviour
 			}
 		}
 	}
+
+   public void SetVelocity(Vector3 newVelocity)
+    {
+        myRigidbody2D.velocity = newVelocity;
+    }
 }

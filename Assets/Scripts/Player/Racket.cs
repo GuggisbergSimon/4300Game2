@@ -15,9 +15,9 @@ public class Racket : MonoBehaviour {
     [SerializeField]
     private float timeChargingHit = 0.0f;
     [SerializeField]
-    private float hitBasePower = 10.0f;
+    private float hitBasePower = 50.0f;
     [SerializeField]
-    private float hitPowerPerSecCharging = 1.0f;
+    private float hitPowerPerSecCharging = 5.0f;
     [SerializeField]
     private float maximumChargingTime = 5.0f;
     [SerializeField]
@@ -29,8 +29,8 @@ public class Racket : MonoBehaviour {
     [SerializeField]
     private float racketCounterRotation = -0.5f;
 
-    // [SerializeField]
-    // private Ball ball;
+    [SerializeField]
+    private Ball ball;
 
     [SerializeField]
     private float racketRotationSpeed = 50.0f;
@@ -46,7 +46,7 @@ public class Racket : MonoBehaviour {
 
 	void Update ()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !isHitting)
         {
             isChargingHit = true;
             gameObject.transform.Rotate(new Vector3(0.0f, 0.0f, 1.0f) * racketCounterRotation * hitSpeed * hitDuration);
@@ -59,6 +59,7 @@ public class Racket : MonoBehaviour {
 
         if(Input.GetButtonUp("Fire1"))
         {
+            Debug.Log("Hitting");
             isChargingHit = false;
             isHitting = true;
         }
@@ -70,6 +71,7 @@ public class Racket : MonoBehaviour {
 
             if(timeHitting >= hitDuration)
             {
+                Debug.Log("Hitting end");
                 isHitting = false;
                 hitBall = false;
                 timeHitting = 0.0f;
@@ -93,13 +95,14 @@ public class Racket : MonoBehaviour {
         }
 	}
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == ("Ball") && !hitBall)
+        if(collision.gameObject.tag == ("Ball") && !hitBall && isHitting)
         {
+            Debug.Log("Ball hit");
             hitBall = true;
             float hitPower = hitBasePower + hitPowerPerSecCharging * timeChargingHit;
-           // ball.SetVelocity(gameobject.transform.up * hitPower);
+            ball.SetVelocity(gameObject.transform.up * hitPower);
         }
     }
 }
