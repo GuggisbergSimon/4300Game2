@@ -7,6 +7,8 @@ TagManager:
   - Ball
   - Ground
   - Net
+  - Border
+  - Racket
   layers:
   - Default
   - TransparentFX

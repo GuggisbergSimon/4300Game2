@@ -9,6 +9,19 @@ public class AudioManager : MonoBehaviour
 
 	public void UpdateAudio()
 	{
-		generalMixer.SetFloat("Pitch", Time.timeScale);
+		if (Time.timeScale.CompareTo(0) == 0)
+		{
+			PauseAudio();
+		}
+		else
+		{
+			AudioListener.pause = false;
+			generalMixer.SetFloat("Pitch", Time.timeScale);
+		}
+	}
+
+	private void PauseAudio()
+	{
+		AudioListener.pause = true;
 	}
 }

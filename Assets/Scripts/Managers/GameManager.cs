@@ -15,25 +15,9 @@ public class GameManager : MonoBehaviour
 	public GameObject[] players;
 
 	private AudioManager myAudioManager;
+	public MatchManager MyMatchManager { get; private set; }
+
 	private bool inLevel = false;
-
-	//TODO delete that code if not needed
-	//That code is not being needed for the moment
-	/*private void OnEnable()
-	{
-		SceneManager.sceneLoaded += OnLevelFinishedLoadingScene;
-	}
-
-	private void OnDisable()
-	{
-		SceneManager.sceneLoaded -= OnLevelFinishedLoadingScene;
-	}
-
-	//Function that is called once a new scene has been loaded
-	private void OnLevelFinishedLoadingScene(Scene scene, LoadSceneMode mode)
-	{
-		//Add code here
-	}*/
 
 	private void CheckEscape()
 	{
@@ -59,9 +43,9 @@ public class GameManager : MonoBehaviour
 		ball = GameObject.FindGameObjectWithTag("Ball");
 		players = GameObject.FindGameObjectsWithTag("Player");
 		myAudioManager = GetComponent<AudioManager>();
+		MyMatchManager = GetComponent<MatchManager>();
 
-		//checks if inlevel
-		//TODO change method of check by player presence or something else
+		//checks if inlevel through the presence of a player
 		if (players.Length>0)
 		{
 			inLevel = true;
@@ -80,17 +64,19 @@ public class GameManager : MonoBehaviour
 		//TODO remove this test
 		if (Input.GetButtonDown("Fire1"))
 		{
-			Time.timeScale = 0.5f;
-			myAudioManager.UpdateAudio();
+			ChangeTimeScale(0.0f);
+			MyMatchManager.AddPointTo(playerNumber.Player1);
+			MyMatchManager.AddPointTo(playerNumber.Player1);
+			MyMatchManager.AddPointTo(playerNumber.Player2);
 		}
 		else if (Input.GetButtonUp("Fire1"))
 		{
-			Time.timeScale = 1.0f;
-			myAudioManager.UpdateAudio();
+			ChangeTimeScale(1.0f);
 		}
 	}
 
 	//check if players are not ordered correctly and order them if so
+	//this is not the perfect way to code it because I'm assuming we have two players in the level, not one or three.
 	void SortPlayers()
 	{
 		if (inLevel && players[0].transform.position.x > players[1].transform.position.x)
@@ -115,7 +101,9 @@ public class GameManager : MonoBehaviour
 
 	public void ChangeTimeScale(float timeScale)
 	{
+
 		Time.timeScale = timeScale;
+		myAudioManager.UpdateAudio();
 	}
 
 	public void LoadLevel(string nameLevel)
