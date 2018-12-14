@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
 			//TODO Something only in level
 		}
 
-		//TEST
+		//TODO remove this test
 		if (Input.GetButtonDown("Fire1"))
 		{
 			Time.timeScale = 0.5f;
