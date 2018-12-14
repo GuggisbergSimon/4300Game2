@@ -5,8 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ball
-  tags:
   - Ground
+  - Net
+  - Border
+  - Racket
   layers:
   - Default
   - TransparentFX
@@ -43,4 +45,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 1882120845
     locked: 0
