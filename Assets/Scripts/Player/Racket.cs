@@ -55,9 +55,11 @@ public class Racket : MonoBehaviour {
 
 	void Update ()
     {
-        if()
+        if(player.GetController().Action3.WasPressed && smashCurrentCharge >= amountOfChargeToSmash)
+        {
 
-
+            smashCurrentCharge -= amountOfChargeToSmash;
+        }
 
         if (player.GetController().Action2.WasPressed && !isHitting)
         {
@@ -113,6 +115,7 @@ public class Racket : MonoBehaviour {
         if(collision.gameObject.tag == ("Ball") && !hitBall && isHitting)
         {
             Debug.Log("Ball hit");
+            smashCurrentCharge += ball.getSmashCharge();
             hitBall = true;
             float hitPower = hitBasePower + hitPowerPerSecCharging * timeChargingHit;
             ball.SetVelocity(gameObject.transform.up * hitPower);

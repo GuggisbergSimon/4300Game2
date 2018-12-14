@@ -7,7 +7,9 @@ public class Ball : MonoBehaviour
 	[SerializeField] private float timeSetupNoFall = 1.5f;
 	[SerializeField] private int setupBlinkTimes = 5;
 
-	private playerNumber lastPlayerHitting = playerNumber.Player1;
+    [SerializeField] private float smashChargePerSpeed = 2.0f;
+
+    private playerNumber lastPlayerHitting = playerNumber.Player1;
 	private Rigidbody2D myRigidbody2D;
 	private SpriteRenderer mySpriteRenderer;
 
@@ -91,5 +93,10 @@ public class Ball : MonoBehaviour
    public void SetVelocity(Vector3 newVelocity)
     {
         myRigidbody2D.velocity = newVelocity;
+    }
+
+    public float getSmashCharge()
+    {
+        return smashChargePerSpeed * myRigidbody2D.velocity.magnitude;
     }
 }
