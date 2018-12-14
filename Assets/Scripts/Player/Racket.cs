@@ -7,13 +7,36 @@ using System;
 public class Racket : MonoBehaviour {
 
     [SerializeField]
-    private bool isHitting;
+    private bool isHitting = false;
+    [SerializeField]
+    private bool isChargingHit = false;
+    [SerializeField]
+    private bool hitBall = false;
+    [SerializeField]
+    private float timeChargingHit = 0.0f;
+    [SerializeField]
+    private float hitBasePower = 10.0f;
+    [SerializeField]
+    private float hitPowerPerSecCharging = 1.0f;
+    [SerializeField]
+    private float maximumChargingTime = 5.0f;
+    [SerializeField]
+    private float hitDuration = 0.2f;
+    [SerializeField]
+    private float timeHitting = 0.0f;
+    [SerializeField]
+    private float hitSpeed = 500.0f;
+    [SerializeField]
+    private float racketCounterRotation = -0.5f;
+
+    // [SerializeField]
+    // private Ball ball;
+
     [SerializeField]
     private float racketRotationSpeed = 50.0f;
 
 	void Start ()
     {
-      // gameObject.transform.forward = new Vector3(1.0f, 0.0f, 0.0f);
         // TODO add gameManager method to change racketRotationSpeed
     }
 	
@@ -23,7 +46,38 @@ public class Racket : MonoBehaviour {
 
 	void Update ()
     {
-        if (!isHitting)
+        if (Input.GetButtonDown("Fire1"))
+        {
+            isChargingHit = true;
+            gameObject.transform.Rotate(new Vector3(0.0f, 0.0f, 1.0f) * racketCounterRotation * hitSpeed * hitDuration);
+        }
+
+        if(isChargingHit)
+        {
+            timeChargingHit += Time.deltaTime;
+        }
+
+        if(Input.GetButtonUp("Fire1"))
+        {
+            isChargingHit = false;
+            isHitting = true;
+        }
+
+        if(isHitting)
+        {
+            timeHitting += Time.deltaTime;
+            gameObject.transform.Rotate(new Vector3( 0.0f, 0.0f, 1.0f) * hitSpeed * Time.deltaTime);
+
+            if(timeHitting >= hitDuration)
+            {
+                isHitting = false;
+                hitBall = false;
+                timeHitting = 0.0f;
+                timeChargingHit = 0.0f;
+            }
+        }
+
+        if (!isHitting && !isChargingHit)
         {
             float vertical = Input.GetAxis("Vertical");
             var inputDevice = InputManager.ActiveDevice;
@@ -34,8 +88,18 @@ public class Racket : MonoBehaviour {
 
            if (racketDirection != Vector3.zero)
            {
-                gameObject.transform.right = racketDirection;
+                gameObject.transform.right = racketDirection.normalized;
            } 
         }
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == ("Ball") && !hitBall)
+        {
+            hitBall = true;
+            float hitPower = hitBasePower + hitPowerPerSecCharging * timeChargingHit;
+           // ball.SetVelocity(gameobject.transform.up * hitPower);
+        }
+    }
 }
