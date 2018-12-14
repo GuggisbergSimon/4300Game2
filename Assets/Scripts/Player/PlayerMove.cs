@@ -17,11 +17,21 @@ public class PlayerMove : MonoBehaviour {
     [SerializeField]
     private bool playerIsJumping = false;
 
+	private playerNumber playerNumber;
+	public playerNumber PlayerNumber => playerNumber;
+
     void Start ()
     {
-		
-
-	}
+		//TODO temporarily code, change it later perhaps
+	    if (transform.position.x > 0)
+	    {
+		    playerNumber = playerNumber.Player2;
+	    }
+	    else
+	    {
+		    playerNumber = playerNumber.Player1;
+	    }
+    }
 	
 	void Update ()
     {
