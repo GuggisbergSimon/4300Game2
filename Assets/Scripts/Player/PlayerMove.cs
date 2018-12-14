@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using InControl;
 
 public class PlayerMove : MonoBehaviour {
 
@@ -17,10 +18,16 @@ public class PlayerMove : MonoBehaviour {
     [SerializeField]
     private bool playerIsJumping = false;
 
+	private InputDevice myController;
 	private playerNumber playerNumber;
 	public playerNumber PlayerNumber => playerNumber;
 
-    void Start ()
+	public void AssignController(InputDevice controller)
+	{
+		myController = controller;
+	}
+
+    private void Start ()
     {
 		//TODO temporarily code, change it later perhaps
 	    if (transform.position.x > 0)
@@ -33,7 +40,7 @@ public class PlayerMove : MonoBehaviour {
 	    }
     }
 	
-	void Update ()
+	private void Update ()
     {
         float horizontal = Input.GetAxis("Horizontal");
 
