@@ -194,8 +194,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114605973596294440, guid: 8c01cdbe47882dd4ba16bda7fc1b24f5, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c01cdbe47882dd4ba16bda7fc1b24f5, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &132577993 stripped
@@ -271,19 +270,19 @@ Prefab:
       objectReference: {fileID: 1000225306}
     - target: {fileID: 4185799435565108, guid: 7cc0e0925beb0c3418d81553be45f517, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.000000012837887
+      value: 0.0000000020622575
       objectReference: {fileID: 0}
     - target: {fileID: 4185799435565108, guid: 7cc0e0925beb0c3418d81553be45f517, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -5.7931254e-10
+      value: -9.371619e-11
       objectReference: {fileID: 0}
     - target: {fileID: 4401346646192026, guid: 7cc0e0925beb0c3418d81553be45f517, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.000000012837887
+      value: 0.0000000020622575
       objectReference: {fileID: 0}
     - target: {fileID: 4401346646192026, guid: 7cc0e0925beb0c3418d81553be45f517, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -5.7931254e-10
+      value: -9.371619e-11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cc0e0925beb0c3418d81553be45f517, type: 2}
@@ -393,15 +392,6 @@ Prefab:
     - target: {fileID: 4947472116620366, guid: 03167730d30f00d42b83fa6e37f5b270, type: 2}
       propertyPath: m_RootOrder
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114762919211031906, guid: 03167730d30f00d42b83fa6e37f5b270,
-        type: 2}
-      propertyPath: ball
-      value: 
-      objectReference: {fileID: 1386387884}
-    - target: {fileID: 1506686557570076, guid: 03167730d30f00d42b83fa6e37f5b270, type: 2}
-      propertyPath: m_Name
-      value: Player2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03167730d30f00d42b83fa6e37f5b270, type: 2}
@@ -519,12 +509,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scorePlayer1: {fileID: 449636811}
   scorePlayer2: {fileID: 173314988}
---- !u!114 &1386387884 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114404069087029900, guid: 98e3b3533a99d424eb7c8b03ee56bd50,
-    type: 2}
-  m_PrefabInternal: {fileID: 1575643322}
-  m_Script: {fileID: 11500000, guid: 1b494506fd2d1e3428a8844e79b66a80, type: 3}
 --- !u!1001 &1405739647
 Prefab:
   m_ObjectHideFlags: 0

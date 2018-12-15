@@ -318,9 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f26e1c4cd26df4eb4f9a5bbda9a4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHitting: 0
   isChargingHit: 0
-  hitBall: 0
   timeChargingHit: 0
   hitBasePower: 30
   hitPowerPerSecCharging: 5
@@ -329,12 +327,14 @@ MonoBehaviour:
   timeHitting: 0
   hitSpeed: 500
   racketCounterRotation: -0.5
-  ball: {fileID: 0}
-  player: {fileID: 0}
   racketRotationSpeed: 200
   smashMaxCharge: 100
   smashCurrentCharge: 0
   amountOfChargeToSmash: 25
+  smashTimeScale: 0.5
+  smashPower: 50
+  smashSpeed: 1000
+  smashDuration: 0.1
 --- !u!212 &212309799545444186
 SpriteRenderer:
   m_ObjectHideFlags: 1

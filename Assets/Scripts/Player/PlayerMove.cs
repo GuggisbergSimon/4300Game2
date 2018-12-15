@@ -67,9 +67,4 @@ public class PlayerMove : MonoBehaviour
 			playerIsJumping = false;
 		}
 	}
-
-	public InputDevice GetController()
-	{
-		return myController;
-	}
 }
