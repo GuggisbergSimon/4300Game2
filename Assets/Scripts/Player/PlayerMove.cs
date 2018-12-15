@@ -52,7 +52,7 @@ public class PlayerMove : MonoBehaviour
 				playerRigidbody2D.velocity = playerNewVelocity;
 			}
 
-			if (myController.Action1 && !playerIsJumping)
+			if (myController.Action1.WasPressed && !playerIsJumping)
 			{
 				playerIsJumping = true;
 				playerRigidbody2D.velocity += new Vector2(0.0f, playerJumpSpeed);
@@ -66,5 +66,10 @@ public class PlayerMove : MonoBehaviour
 		{
 			playerIsJumping = false;
 		}
+	}
+
+	public InputDevice GetController()
+	{
+		return myController;
 	}
 }
