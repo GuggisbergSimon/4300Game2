@@ -42,7 +42,7 @@ public class Ball : MonoBehaviour
 		myRigidbody2D.gravityScale = gravityScale;
 	}
 
-	private void Start()
+	private void Awake()
 	{
 		myRigidbody2D = GetComponent<Rigidbody2D>();
 		mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using InControl;
 using UnityEngine;
 using InControl;
-using System;
 
 public class Racket : MonoBehaviour
 {
@@ -28,6 +27,8 @@ public class Racket : MonoBehaviour
 	[SerializeField] private float smashCurrentCharge = 0.0f;
 	[SerializeField] private float amountOfChargeToSmash = 25.0f;
 
+	private Vector2 racketDirection;
+
 	void Start()
 	{
 		// TODO add gameManager method to change racketRotationSpeed
@@ -41,27 +42,30 @@ public class Racket : MonoBehaviour
 
 	void Update()
 	{
-		Debug.Log(player.MyController);
-		if (player.GetController() != null)
+		if (player.MyController != null)
 		{
-			if (player.GetController().Action3.WasPressed && smashCurrentCharge >= amountOfChargeToSmash)
+			//check if smash is possible and deplete gauge, TODO make the ball smash actually
+			if (player.MyController.RightTrigger.WasPressed && smashCurrentCharge >= amountOfChargeToSmash)
 			{
 				smashCurrentCharge -= amountOfChargeToSmash;
 			}
 
-			if (player.GetController().Action2.WasPressed && !isHitting)
+			//start of a hit
+			if (player.MyController.RightBumper.WasPressed && !isHitting)
 			{
 				isChargingHit = true;
-				gameObject.transform.Rotate(new Vector3(0.0f, 0.0f, 1.0f) * racketCounterRotation * hitSpeed *
-				                            hitDuration);
+				//TODO keep that rotation while charging
+				//gameObject.transform.Rotate(new Vector3(0.0f, 0.0f, 1.0f) * racketCounterRotation * hitSpeed *
+				//                          hitDuration);
 			}
 
+			//charging a hit
 			if (isChargingHit)
 			{
 				timeChargingHit += Time.deltaTime;
 			}
 
-			if (player.GetController().Action2.WasReleased)
+			if (player.MyController.RightBumper.WasReleased)
 			{
 				Debug.Log("Hitting");
 				isChargingHit = false;
@@ -83,16 +87,13 @@ public class Racket : MonoBehaviour
 				}
 			}
 
-			if (!isHitting && !isChargingHit)
+			if (!isHitting)
 			{
-				float vertical = Input.GetAxis("Vertical");
-				var inputDevice = InputManager.ActiveDevice;
+				racketDirection = player.MyController.RightStick;
+				Debug.DrawLine(transform.position, transform.position + (Vector3) racketDirection * 4.0f);
+				//Vector2 racketDirection = player.MyController.RightStick;
 
-				Vector3 racketDirection = new Vector3(inputDevice.RightStickX, inputDevice.RightStickY, 0.0f);
-
-				// gameObject.transform.Rotate(transform.forward * Time.deltaTime * -vertical * racketRotationSpeed,Space.Self); // Keyboard control
-
-				if (racketDirection != Vector3.zero)
+				if (racketDirection != Vector2.zero)
 				{
 					gameObject.transform.right = racketDirection.normalized;
 				}
@@ -108,7 +109,7 @@ public class Racket : MonoBehaviour
 			smashCurrentCharge += ball.getSmashCharge();
 			hitBall = true;
 			float hitPower = hitBasePower + hitPowerPerSecCharging * timeChargingHit;
-			ball.SetVelocity(gameObject.transform.up * hitPower);
+			ball.SetVelocity(racketDirection * hitPower);
 		}
 	}
 }
