@@ -28,12 +28,21 @@ public class Racket : MonoBehaviour
 	[SerializeField] private float amountOfChargeToSmash = 25.0f;
 
 	private Vector2 racketDirection;
+	private bool isFacingRightAtStartup;
 
 	void Start()
 	{
 		// TODO add gameManager method to change racketRotationSpeed
 		ball = GameManager.Instance.Ball.GetComponent<Ball>();
 		player = GetComponentInParent<PlayerMove>();
+		if (transform.right.x > 0)
+		{
+			isFacingRightAtStartup = true;
+		}
+		else
+		{
+			isFacingRightAtStartup = false;
+		}
 	}
 
 	// Controller sets direction to the joystick's direction
@@ -75,7 +84,16 @@ public class Racket : MonoBehaviour
 			if (isHitting)
 			{
 				timeHitting += Time.deltaTime;
-				gameObject.transform.Rotate(new Vector3(0.0f, 0.0f, 1.0f) * hitSpeed * Time.deltaTime);
+
+				//we rotate the racket depending on its orientation
+				//NB : that's super ugly
+				Vector3 orientation=Vector3.forward;
+				if (!isFacingRightAtStartup)
+				{
+					orientation *= -1;
+				}
+
+				gameObject.transform.Rotate(orientation* hitSpeed * Time.deltaTime);
 
 				if (timeHitting >= hitDuration)
 				{
