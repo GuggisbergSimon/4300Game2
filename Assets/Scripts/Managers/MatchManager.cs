@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class MatchManager : MonoBehaviour
@@ -35,6 +36,7 @@ public class MatchManager : MonoBehaviour
 	public void AddPointTo(playerNumber player)
 	{
 		GameManager.Instance.Score[player]++;
+		GameManager.Instance.UpdateUI();
 		Engage(player.GetOpponent());
 	}
 }

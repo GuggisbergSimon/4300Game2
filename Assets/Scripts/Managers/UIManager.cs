@@ -22,7 +22,6 @@ public class UIManager : MonoBehaviour
 
 	private void UpdateScore(playerNumber player)
 	{
-		Debug.Log(player);
 		switch (player)
 		{
 			case playerNumber.Player1:
@@ -47,7 +46,6 @@ public class UIManager : MonoBehaviour
 
 	private void UpdateGauge(playerNumber player)
 	{
-		Debug.Log(player);
 		Racket racket = GameManager.Instance.GetPlayer(player).MyRacket;
 		float percent = racket.SmashCurrentCharge / racket.SmashMaxCharge;
 		switch (player)

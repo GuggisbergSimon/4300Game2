@@ -75,6 +75,7 @@ public class Racket : MonoBehaviour
 					if (player.MyController.RightTrigger.WasPressed && smashCurrentCharge >= amountOfChargeToSmash)
 					{
 						smashCurrentCharge -= amountOfChargeToSmash;
+						GameManager.Instance.UpdateUI();
 						myState = RacketStates.PrepareToSmash;
 					}
 					else if (player.MyController.RightBumper.WasPressed)
@@ -193,7 +194,6 @@ public class Racket : MonoBehaviour
 						smashCurrentCharge = smashMaxCharge;
 					}
 
-					Debug.Log("ball hit, SmashCharge is : " + smashCurrentCharge);
 					float hitPower = hitBasePower + hitPowerPerSecCharging * timeChargingHit;
 					SendBall(hitPower);
 					break;
