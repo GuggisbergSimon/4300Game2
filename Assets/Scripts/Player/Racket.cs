@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using InControl;
 using UnityEngine;
-using InControl;
 
 public class Racket : MonoBehaviour
 {
-	[SerializeField] private bool isChargingHit = false;
 	[SerializeField] private float timeChargingHit = 0.0f;
 	[SerializeField] private float hitBasePower = 5.0f;
 	[SerializeField] private float hitPowerPerSecCharging = 5.0f;
@@ -14,8 +12,9 @@ public class Racket : MonoBehaviour
 	[SerializeField] private float hitDuration = 0.2f;
 	[SerializeField] private float timeHitting = 0.0f;
 	[SerializeField] private float hitSpeed = 500.0f;
-	[SerializeField] private float racketCounterRotation = -0.5f;
-	[SerializeField] private float racketRotationSpeed = 50.0f;
+
+	//[SerializeField] private float racketCounterRotation = -0.5f;
+	//[SerializeField] private float racketRotationSpeed = 50.0f;
 	[SerializeField] private float smashMaxCharge = 100.0f;
 	[SerializeField] private float smashCurrentCharge = 0.0f;
 	[SerializeField] private float amountOfChargeToSmash = 25.0f;
@@ -28,12 +27,11 @@ public class Racket : MonoBehaviour
 	private PlayerMove player;
 	private Vector2 racketDirection;
 	private bool isFacingRightAtStartup;
-
 	private bool hitBall = false;
-
-	//private bool isHitting = false;
-	//private bool isSmashing = false;
 	private RacketStates myState = RacketStates.Idle;
+	public float SmashMaxCharge => smashMaxCharge;
+	public float SmashCurrentCharge => smashCurrentCharge;
+	public float AmountOfChargeToSmash => amountOfChargeToSmash;
 
 	private enum RacketStates
 	{
@@ -47,6 +45,7 @@ public class Racket : MonoBehaviour
 	void Start()
 	{
 		// TODO add gameManager method to change racketRotationSpeed
+
 		ball = GameManager.Instance.Ball.GetComponent<Ball>();
 		player = GetComponentInParent<PlayerMove>();
 		if (transform.right.x > 0)
@@ -67,6 +66,7 @@ public class Racket : MonoBehaviour
 	{
 		if (player.MyController != null)
 		{
+			Debug.DrawLine(transform.position, transform.position + (Vector3) racketDirection * 4.0f);
 			switch (myState)
 			{
 				case RacketStates.Idle:
@@ -140,69 +140,10 @@ public class Racket : MonoBehaviour
 					break;
 				}
 			}
-
-			/*//check if smash is possible and deplete gauge
-			if (player.MyController.RightTrigger.WasPressed && smashCurrentCharge >= amountOfChargeToSmash)
-			{
-				smashCurrentCharge -= amountOfChargeToSmash;
-				StartCoroutine(Smash());
-			}*/
-
-			//start of a hit
-			/*if (player.MyController.RightBumper.WasPressed && !isHitting)
-			{
-				isChargingHit = true;
-			}*/
-
-			//charging a hit
-			/*if (isChargingHit)
-			{
-				timeChargingHit += Time.deltaTime;
-			}
-
-			if (player.MyController.RightBumper.WasReleased)
-			{
-				isChargingHit = false;
-				isHitting = true;
-			}*/
-
-			/*if (isHitting)
-			{
-				timeHitting += Time.deltaTime;
-
-				//we rotate the racket depending on its orientation
-				//NB : that's super ugly
-				Vector3 orientation = Vector3.forward;
-				if (!isFacingRightAtStartup)
-				{
-					orientation *= -1;
-				}
-
-				gameObject.transform.Rotate(orientation * hitSpeed * Time.deltaTime);
-
-				if (timeHitting >= hitDuration)
-				{
-					isHitting = false;
-					hitBall = false;
-					timeHitting = 0.0f;
-					timeChargingHit = 0.0f;
-				}
-			}*/
-
-			/*if (!isHitting)
-			{
-				racketDirection = player.MyController.RightStick;
-				Debug.DrawLine(transform.position, transform.position + (Vector3) racketDirection * 4.0f);
-				if (racketDirection != Vector2.zero)
-				{
-					gameObject.transform.right = racketDirection.normalized;
-				}
-			}*/
 		}
 	}
 
 	//Rotate the racket depending on its orientation
-
 	private void RotateHit(float speed)
 	{
 		//TODO, rewrite more properly the following 5 lines, it's super ugly rn
@@ -224,8 +165,6 @@ public class Racket : MonoBehaviour
 			racketDirection.Normalize();
 			gameObject.transform.right = racketDirection;
 		}
-
-		Debug.DrawLine(transform.position, transform.position + (Vector3) racketDirection * 4.0f);
 	}
 
 	private void SendBall(float power)
@@ -248,6 +187,7 @@ public class Racket : MonoBehaviour
 				case RacketStates.Hitting:
 				{
 					smashCurrentCharge += ball.GetSmashCharge();
+					GameManager.Instance.UpdateUI();
 					if (smashCurrentCharge > smashMaxCharge)
 					{
 						smashCurrentCharge = smashMaxCharge;

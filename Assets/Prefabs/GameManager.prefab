@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114601920121862340}
   - component: {fileID: 114805982630566242}
   - component: {fileID: 114568588324245146}
+  - component: {fileID: 114423549701053202}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -71,6 +72,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114423549701053202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1258160384078288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 152a1a58e900b0b49ad2822a43ff9d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePlayer1: {fileID: 0}
+  scorePlayer2: {fileID: 0}
+  gaugeSmashPlayer1: {fileID: 0}
+  gaugeSmashPlayer2: {fileID: 0}
 --- !u!114 &114568588324245146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -95,7 +111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9785c5afc5f55e14396336dc15aeae60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players: []
 --- !u!114 &114805982630566242
 MonoBehaviour:
   m_ObjectHideFlags: 1

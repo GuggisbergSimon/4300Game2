@@ -19,6 +19,9 @@ public class PlayerMove : MonoBehaviour
 	private playerNumber playerNumber;
 	public playerNumber PlayerNumber => playerNumber;
 
+	private Racket myRacket;
+	public Racket MyRacket => myRacket;
+
 	public void AssignController(InputDevice controller)
 	{
 		myController = controller;
@@ -26,6 +29,8 @@ public class PlayerMove : MonoBehaviour
 
 	private void Start()
 	{
+		myRacket = GetComponentInChildren<Racket>();
+
 		//TODO temporarily code, change it later perhaps
 		if (transform.position.x > 0)
 		{
