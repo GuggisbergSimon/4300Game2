@@ -6,7 +6,6 @@ public class Ball : MonoBehaviour
 {
 	[SerializeField] private float timeSetupNoFall = 1.5f;
 	[SerializeField] private int setupBlinkTimes = 5;
-
 	[SerializeField] private float smashChargePerSpeed = 2.0f;
 
 	private playerNumber lastPlayerHitting = playerNumber.Player1;
@@ -42,7 +41,7 @@ public class Ball : MonoBehaviour
 		myRigidbody2D.gravityScale = gravityScale;
 	}
 
-	private void Start()
+	private void Awake()
 	{
 		myRigidbody2D = GetComponent<Rigidbody2D>();
 		mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -107,7 +106,7 @@ public class Ball : MonoBehaviour
 		myRigidbody2D.velocity = newVelocity;
 	}
 
-	public float getSmashCharge()
+	public float GetSmashCharge()
 	{
 		return smashChargePerSpeed * myRigidbody2D.velocity.magnitude;
 	}

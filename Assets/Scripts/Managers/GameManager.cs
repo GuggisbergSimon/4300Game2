@@ -13,9 +13,11 @@ public class GameManager : MonoBehaviour
 	private GameObject ball;
 	public GameObject Ball => ball;
 
-	public GameObject[] players;
+	private PlayerMove[] players;
+	public PlayerMove[] Players => players;
 
 	private AudioManager myAudioManager;
+	private UIManager myUIManager;
 	public MatchManager MyMatchManager { get; private set; }
 
 	private bool inLevel = false;
@@ -30,7 +32,11 @@ public class GameManager : MonoBehaviour
 	public Dictionary<playerNumber, int> Score
 	{
 		get { return score; }
-		set { score = value; }
+		set
+		{
+			score = value;
+			UpdateUI();
+		}
 	}
 
 	private void CheckEscape()
@@ -55,9 +61,16 @@ public class GameManager : MonoBehaviour
 		}
 
 		ball = GameObject.FindGameObjectWithTag("Ball");
-		players = GameObject.FindGameObjectsWithTag("Player");
+		GameObject[] playersObject = GameObject.FindGameObjectsWithTag("Player");
+		players = new PlayerMove[playersObject.Length];
+		for (int i = 0; i < playersObject.Length; i++)
+		{
+			players[i] = playersObject[i].GetComponent<PlayerMove>();
+		}
+
 		myAudioManager = GetComponent<AudioManager>();
 		MyMatchManager = GetComponent<MatchManager>();
+		myUIManager = GetComponent<UIManager>();
 
 		//checks if inlevel through the presence of a player
 		if (players.Length > 0)
@@ -67,6 +80,11 @@ public class GameManager : MonoBehaviour
 		}
 
 		SortPlayers();
+	}
+
+	private void Start()
+	{
+		UpdateUI();
 	}
 
 	private IEnumerator AddPlayers()
@@ -88,7 +106,6 @@ public class GameManager : MonoBehaviour
 
 	private void Update()
 	{
-
 		if (inLevel)
 		{
 			//TODO Something only in level
@@ -120,7 +137,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public GameObject GetPlayer(playerNumber player)
+	public PlayerMove GetPlayer(playerNumber player)
 	{
 		if (player == playerNumber.Player1)
 		{
@@ -130,6 +147,11 @@ public class GameManager : MonoBehaviour
 		{
 			return players[1];
 		}
+	}
+
+	public void UpdateUI()
+	{
+		myUIManager.UpdateUI();
 	}
 
 	public void ChangeTimeScale(float timeScale)
