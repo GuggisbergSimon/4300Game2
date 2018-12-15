@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using InControl;
 using UnityEngine;
 
 public class Racket : MonoBehaviour {
@@ -9,8 +10,11 @@ public class Racket : MonoBehaviour {
     [SerializeField]
     private float racketRotationSpeed = 50.0f;
 
+	private InputDevice controller;
+
 	void Start ()
-    {
+	{
+		controller = GetComponentInParent<PlayerMove>().MyController;
 		// TODO add gameManager method to change racketRotationSpeed
 	}
 	
@@ -22,7 +26,8 @@ public class Racket : MonoBehaviour {
     {
         if (!isHitting)
         {
-            float vertical = Input.GetAxis("Vertical");
+            //float vertical = Input.GetAxis("Vertical");
+	        float vertical = controller.LeftStickY;
 
             gameObject.transform.Rotate(transform.forward * Time.deltaTime * -vertical * racketRotationSpeed,Space.Self);
         }

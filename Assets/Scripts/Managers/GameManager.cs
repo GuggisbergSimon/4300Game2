@@ -21,6 +21,18 @@ public class GameManager : MonoBehaviour
 	private bool inLevel = false;
 	public bool InLevel => inLevel;
 
+	private Dictionary<playerNumber, int> score = new Dictionary<playerNumber, int>()
+	{
+		{playerNumber.Player1, 0},
+		{playerNumber.Player2, 0}
+	};
+
+	public Dictionary<playerNumber, int> Score
+	{
+		get { return score; }
+		set { score = value; }
+	}
+
 	private void CheckEscape()
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
@@ -31,7 +43,6 @@ public class GameManager : MonoBehaviour
 
 	private void Awake()
 	{
-		var inputDevices = InputManager.Devices;
 		//checks if another instance of GameManager exists, if so, destroy it, ensuring that only one GameManager exists at all time.
 		if (instance != null && instance != this)
 		{
@@ -49,27 +60,42 @@ public class GameManager : MonoBehaviour
 		MyMatchManager = GetComponent<MatchManager>();
 
 		//checks if inlevel through the presence of a player
-		if (players.Length>0)
+		if (players.Length > 0)
 		{
 			inLevel = true;
-			for (int i = 0; i < players.Length; i++)
-			{
-				players[i].GetComponent<PlayerMove>().AssignController(inputDevices[i]);
-			}
+			StartCoroutine(AddPlayers());
 		}
 
 		SortPlayers();
 	}
 
+	private IEnumerator AddPlayers()
+	{
+		var inputDevices = InputManager.Devices;
+
+		//we have to check periodically wether all the requested devices have been recognised, or not
+		while (inputDevices == null || inputDevices.Count < 2)
+		{
+			yield return new WaitForSeconds(0.5f);
+			inputDevices = InputManager.Devices;
+		}
+
+		for (int i = 0; i < players.Length; i++)
+		{
+			players[i].GetComponent<PlayerMove>().AssignController(inputDevices[i]);
+		}
+	}
+
 	private void Update()
 	{
+
 		if (inLevel)
 		{
 			//TODO Something only in level
 		}
 
 		//TODO remove this test
-		if (Input.GetButtonDown("Fire1"))
+		/*if (Input.GetButtonDown("Fire1"))
 		{
 			ChangeTimeScale(0.0f);
 			MyMatchManager.AddPointTo(playerNumber.Player1);
@@ -79,7 +105,7 @@ public class GameManager : MonoBehaviour
 		else if (Input.GetButtonUp("Fire1"))
 		{
 			ChangeTimeScale(1.0f);
-		}
+		}*/
 	}
 
 	//check if players are not ordered correctly and order them if so
@@ -108,7 +134,6 @@ public class GameManager : MonoBehaviour
 
 	public void ChangeTimeScale(float timeScale)
 	{
-
 		Time.timeScale = timeScale;
 		myAudioManager.UpdateAudio();
 	}
