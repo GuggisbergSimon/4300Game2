@@ -51,7 +51,6 @@ public class Ball : MonoBehaviour
 	private void OnCollisionEnter2D(Collision2D other)
 	{
 		GameObject collisionObject = other.gameObject;
-
 		switch (collisionObject.tag)
 		{
 			case "Border":
@@ -84,19 +83,21 @@ public class Ball : MonoBehaviour
 				GameManager.Instance.MyMatchManager.AddPointTo(player.PlayerNumber.GetOpponent());
 				break;
 			}
-			case "Racket":
-			{
-				PlayerMove player = collisionObject.GetComponentInParent<PlayerMove>();
-				if (player.PlayerNumber != lastPlayerHitting)
-				{
-					lastPlayerHitting = player.PlayerNumber;
-				}
-				else
-				{
-					GameManager.Instance.MyMatchManager.AddPointTo(player.PlayerNumber.GetOpponent());
-				}
+		}
+	}
 
-				break;
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.gameObject.CompareTag("Racket"))
+		{
+			PlayerMove player = other.gameObject.GetComponentInParent<PlayerMove>();
+			if (player.PlayerNumber != lastPlayerHitting)
+			{
+				lastPlayerHitting = player.PlayerNumber;
+			}
+			else
+			{
+				GameManager.Instance.MyMatchManager.AddPointTo(player.PlayerNumber.GetOpponent());
 			}
 		}
 	}
