@@ -217,12 +217,15 @@ public class Racket : MonoBehaviour
 
 	private void RotateRacketThroughInput()
 	{
-		racketDirection = player.MyController.RightStick;
-		Debug.DrawLine(transform.position, transform.position + (Vector3) racketDirection * 4.0f);
-		if (racketDirection != Vector2.zero)
+		//update racket direction only if new input received, and normalized racketdirection so that it's always the same basic speed applied anywhere
+		if (player.MyController.RightStick)
 		{
-			gameObject.transform.right = racketDirection.normalized;
+			racketDirection = player.MyController.RightStick;
+			racketDirection.Normalize();
+			gameObject.transform.right = racketDirection;
 		}
+
+		Debug.DrawLine(transform.position, transform.position + (Vector3) racketDirection * 4.0f);
 	}
 
 	private void SendBall(float power)
