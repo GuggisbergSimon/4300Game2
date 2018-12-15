@@ -7,9 +7,12 @@ public class Ball : MonoBehaviour
 	[SerializeField] private float timeSetupNoFall = 1.5f;
 	[SerializeField] private int setupBlinkTimes = 5;
 
+	[SerializeField] private float smashChargePerSpeed = 2.0f;
+
 	private playerNumber lastPlayerHitting = playerNumber.Player1;
 	private Rigidbody2D myRigidbody2D;
 	private SpriteRenderer mySpriteRenderer;
+	private Collider2D myCollider2D;
 
 	public void SetVelocity(Vector2 velocity)
 	{
@@ -24,6 +27,7 @@ public class Ball : MonoBehaviour
 		SetVelocity(Vector2.zero);
 		myRigidbody2D.gravityScale = 0.0f;
 		transform.position = position;
+		myCollider2D.enabled = false;
 
 		while (timer < timeSetupNoFall)
 		{
@@ -34,6 +38,7 @@ public class Ball : MonoBehaviour
 			timer += timeSetupNoFall / setupBlinkTimes;
 		}
 
+		myCollider2D.enabled = true;
 		myRigidbody2D.gravityScale = gravityScale;
 	}
 
@@ -41,6 +46,7 @@ public class Ball : MonoBehaviour
 	{
 		myRigidbody2D = GetComponent<Rigidbody2D>();
 		mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+		myCollider2D = GetComponent<Collider2D>();
 	}
 
 	private void OnCollisionEnter2D(Collision2D other)
@@ -94,5 +100,15 @@ public class Ball : MonoBehaviour
 				break;
 			}
 		}
+	}
+
+	public void SetVelocity(Vector3 newVelocity)
+	{
+		myRigidbody2D.velocity = newVelocity;
+	}
+
+	public float getSmashCharge()
+	{
+		return smashChargePerSpeed * myRigidbody2D.velocity.magnitude;
 	}
 }
