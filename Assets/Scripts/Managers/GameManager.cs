@@ -98,12 +98,14 @@ public class GameManager : MonoBehaviour
 			{
 				players[i].GetComponent<PlayerMove>().AssignController(inputDevices.ElementAt(i));
 			}
-
+			//TODO add message that players have be (re) assigned
+			myUIManager.ToggleControllerMenu(false);
 			ChangeTimeScale(1.0f);
 		}
 		else
 		{
 			ChangeTimeScale(0.0f);
+			myUIManager.ToggleControllerMenu(true);
 		}
 	}
 
@@ -111,7 +113,6 @@ public class GameManager : MonoBehaviour
 	{
 		if (inLevel)
 		{
-			//TODO Something only in level
 		}
 	}
 

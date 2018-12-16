@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI scorePlayer2;
 	[SerializeField] private Image gaugeSmashPlayer1;
 	[SerializeField] private Image gaugeSmashPlayer2;
+	[SerializeField] private GameObject panelControllerMenu;
 
 	public void UpdateUI()
 	{
@@ -18,6 +19,11 @@ public class UIManager : MonoBehaviour
 			UpdateScore(player.PlayerNumber);
 			UpdateGauge(player.PlayerNumber);
 		}
+	}
+
+	public void ToggleControllerMenu(bool value)
+	{
+		panelControllerMenu.SetActive(value);
 	}
 
 	private void UpdateScore(playerNumber player)

@@ -87,6 +87,7 @@ MonoBehaviour:
   scorePlayer2: {fileID: 0}
   gaugeSmashPlayer1: {fileID: 0}
   gaugeSmashPlayer2: {fileID: 0}
+  panelControllerMenu: {fileID: 0}
 --- !u!114 &114568588324245146
 MonoBehaviour:
   m_ObjectHideFlags: 1
