@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
 	{
 		var inputDevices = InputManager.Devices;
 
-		//we have to check periodically wether all the requested devices have been recognised, or not
+		//we have to check periodically wether all the requested devices have been recognized, or not
 		while (inputDevices == null || inputDevices.Count < 2)
 		{
 			yield return new WaitForSeconds(0.5f);
@@ -109,19 +109,6 @@ public class GameManager : MonoBehaviour
 		{
 			//TODO Something only in level
 		}
-
-		//TODO remove this test
-		/*if (Input.GetButtonDown("Fire1"))
-		{
-			ChangeTimeScale(0.0f);
-			MyMatchManager.AddPointTo(playerNumber.Player1);
-			MyMatchManager.AddPointTo(playerNumber.Player1);
-			MyMatchManager.AddPointTo(playerNumber.Player2);
-		}
-		else if (Input.GetButtonUp("Fire1"))
-		{
-			ChangeTimeScale(1.0f);
-		}*/
 	}
 
 	//check if players are not ordered correctly and order them if so

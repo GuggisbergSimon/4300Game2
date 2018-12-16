@@ -46,6 +46,8 @@ public class PlayerMove : MonoBehaviour
 	{
 		if (myController != null)
 		{
+			Debug.Log(myController.IsAttached + " " + playerNumber);
+
 			float horizontal = myController.LeftStickX;
 
 			if (Math.Abs(playerRigidbody2D.velocity.x) <= playerMaxSpeed)
@@ -62,6 +64,11 @@ public class PlayerMove : MonoBehaviour
 				playerIsJumping = true;
 				playerRigidbody2D.velocity += new Vector2(0.0f, playerJumpSpeed);
 			}
+		}
+		else
+		{
+			//pause the game
+			//prints somewhere connect 2 gamepad
 		}
 	}
 
