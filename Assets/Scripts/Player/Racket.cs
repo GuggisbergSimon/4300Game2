@@ -29,6 +29,7 @@ public class Racket : MonoBehaviour
 	private bool isFacingRightAtStartup;
 	private bool hitBall = false;
 	private RacketStates myState = RacketStates.Idle;
+	private Quaternion rotationBeforeHitting;
 	public float SmashMaxCharge => smashMaxCharge;
 	public float SmashCurrentCharge => smashCurrentCharge;
 	public float AmountOfChargeToSmash => amountOfChargeToSmash;
@@ -93,6 +94,7 @@ public class Racket : MonoBehaviour
 					{
 						GameManager.Instance.ChangeTimeScale(1.0f);
 						myState = RacketStates.Smashing;
+						rotationBeforeHitting = transform.rotation;
 					}
 
 					break;
@@ -109,6 +111,7 @@ public class Racket : MonoBehaviour
 					if (player.MyController.RightBumper.WasReleased)
 					{
 						myState = RacketStates.Hitting;
+						rotationBeforeHitting = transform.rotation;
 					}
 
 					break;
@@ -123,6 +126,7 @@ public class Racket : MonoBehaviour
 						timeChargingHit = 0.0f;
 						hitBall = false;
 						myState = RacketStates.Idle;
+						transform.rotation = rotationBeforeHitting;
 					}
 
 					break;
@@ -136,6 +140,7 @@ public class Racket : MonoBehaviour
 						timeHitting = 0.0f;
 						hitBall = false;
 						myState = RacketStates.Idle;
+						transform.rotation = rotationBeforeHitting;
 					}
 
 					break;

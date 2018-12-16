@@ -47,7 +47,6 @@ public class PlayerMove : MonoBehaviour
 		if (myController != null)
 		{
 			float horizontal = myController.LeftStickX;
-			Debug.Log(horizontal);
 
 			if (Math.Abs(playerRigidbody2D.velocity.x) <= playerMaxSpeed)
 			{
