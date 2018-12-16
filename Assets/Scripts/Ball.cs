@@ -63,6 +63,7 @@ public class Ball : MonoBehaviour
 			case "Border":
 			{
 				GameManager.Instance.MyMatchManager.AddPointTo(lastPlayerHitting.GetOpponent());
+				lastPlayerHitting = lastPlayerHitting.GetOpponent();
 				break;
 			}
 			case "Ground":
@@ -75,6 +76,7 @@ public class Ball : MonoBehaviour
 				else
 				{
 					GameManager.Instance.MyMatchManager.AddPointTo(lastPlayerHitting.GetOpponent());
+					lastPlayerHitting = lastPlayerHitting.GetOpponent();
 				}
 
 				break;
@@ -82,12 +84,14 @@ public class Ball : MonoBehaviour
 			case "Net":
 			{
 				GameManager.Instance.MyMatchManager.AddPointTo(lastPlayerHitting.GetOpponent());
+				lastPlayerHitting = lastPlayerHitting.GetOpponent();
 				break;
 			}
 			case "Player":
 			{
 				PlayerMove player = collisionObject.GetComponent<PlayerMove>();
 				GameManager.Instance.MyMatchManager.AddPointTo(player.PlayerNumber.GetOpponent());
+				lastPlayerHitting = player.PlayerNumber.GetOpponent();
 				break;
 			}
 		}
