@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using InControl;
 using UnityEngine;
@@ -7,6 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+	[SerializeField] private int numberPlayersRequired = 2;
+	private IReadOnlyCollection<InputDevice> inputDevices;
+
 	private static GameManager instance = null;
 	public static GameManager Instance => instance;
 
@@ -32,10 +36,7 @@ public class GameManager : MonoBehaviour
 	public Dictionary<playerNumber, int> Score
 	{
 		get { return score; }
-		set
-		{
-			score = value;
-		}
+		set { score = value; }
 	}
 
 	private void CheckEscape()
@@ -72,10 +73,12 @@ public class GameManager : MonoBehaviour
 		myUIManager = GetComponent<UIManager>();
 
 		//checks if inlevel through the presence of a player
-		if (players.Length > 0)
+		if (players.Length >= numberPlayersRequired)
 		{
 			inLevel = true;
-			StartCoroutine(AddPlayers());
+			ScanPlayers();
+			InputManager.OnDeviceDetached += inputDevices => ScanPlayers();
+			InputManager.OnDeviceAttached += inputDevices => ScanPlayers();
 		}
 
 		SortPlayers();
@@ -86,20 +89,21 @@ public class GameManager : MonoBehaviour
 		UpdateUI();
 	}
 
-	private IEnumerator AddPlayers()
+	void ScanPlayers()
 	{
-		var inputDevices = InputManager.Devices;
-
-		//we have to check periodically wether all the requested devices have been recognized, or not
-		while (inputDevices == null || inputDevices.Count < 2)
+		inputDevices = InputManager.Devices;
+		if (inputDevices.Count >= numberPlayersRequired)
 		{
-			yield return new WaitForSeconds(0.5f);
-			inputDevices = InputManager.Devices;
+			for (int i = 0; i < players.Length; i++)
+			{
+				players[i].GetComponent<PlayerMove>().AssignController(inputDevices.ElementAt(i));
+			}
+
+			ChangeTimeScale(1.0f);
 		}
-
-		for (int i = 0; i < players.Length; i++)
+		else
 		{
-			players[i].GetComponent<PlayerMove>().AssignController(inputDevices[i]);
+			ChangeTimeScale(0.0f);
 		}
 	}
 

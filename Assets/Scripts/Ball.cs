@@ -15,6 +15,7 @@ public class Ball : MonoBehaviour
 		get { return lastPlayerHitting; }
 		set { lastPlayerHitting = value; }
 	}
+
 	private Rigidbody2D myRigidbody2D;
 	private SpriteRenderer mySpriteRenderer;
 	private Collider2D myCollider2D;
@@ -90,23 +91,6 @@ public class Ball : MonoBehaviour
 				break;
 			}
 		}
-	}
-
-	private void OnTriggerEnter2D(Collider2D other)
-	{
-		/*if (other.gameObject.CompareTag("Racket"))
-		{
-			PlayerMove player = other.gameObject.GetComponentInParent<PlayerMove>();
-			if (player.PlayerNumber != lastPlayerHitting)
-			{
-				lastPlayerHitting = player.PlayerNumber;
-			}
-			else
-			{
-				lastPlayerHitting = lastPlayerHitting.GetOpponent();
-				GameManager.Instance.MyMatchManager.AddPointTo(player.PlayerNumber.GetOpponent());
-			}
-		}*/
 	}
 
 	public void SetVelocity(Vector3 newVelocity)
