@@ -171,7 +171,17 @@ public class Racket : MonoBehaviour
 	private void SendBall(float power)
 	{
 		hitBall = true;
-		ball.SetVelocity(racketDirection * power);
+		if (player.PlayerNumber != ball.LastPlayerHitting)
+		{
+			ball.LastPlayerHitting = player.PlayerNumber;
+			ball.SetVelocity(racketDirection * power);
+		}
+		else
+		{
+			ball.LastPlayerHitting = ball.LastPlayerHitting.GetOpponent();
+			GameManager.Instance.MyMatchManager.AddPointTo(player.PlayerNumber.GetOpponent());
+		}
+
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)

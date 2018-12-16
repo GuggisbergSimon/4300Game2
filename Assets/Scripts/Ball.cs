@@ -9,6 +9,12 @@ public class Ball : MonoBehaviour
 	[SerializeField] private float smashChargePerSpeed = 2.0f;
 
 	private playerNumber lastPlayerHitting = playerNumber.Player1;
+
+	public playerNumber LastPlayerHitting
+	{
+		get { return lastPlayerHitting; }
+		set { lastPlayerHitting = value; }
+	}
 	private Rigidbody2D myRigidbody2D;
 	private SpriteRenderer mySpriteRenderer;
 	private Collider2D myCollider2D;
@@ -88,7 +94,7 @@ public class Ball : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("Racket"))
+		/*if (other.gameObject.CompareTag("Racket"))
 		{
 			PlayerMove player = other.gameObject.GetComponentInParent<PlayerMove>();
 			if (player.PlayerNumber != lastPlayerHitting)
@@ -97,9 +103,10 @@ public class Ball : MonoBehaviour
 			}
 			else
 			{
+				lastPlayerHitting = lastPlayerHitting.GetOpponent();
 				GameManager.Instance.MyMatchManager.AddPointTo(player.PlayerNumber.GetOpponent());
 			}
-		}
+		}*/
 	}
 
 	public void SetVelocity(Vector3 newVelocity)
