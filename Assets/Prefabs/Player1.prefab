@@ -11,22 +11,6 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1487118437034034}
   m_IsPrefabAsset: 1
---- !u!1 &1215457951689034
-GameObject:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4255996551271066}
-  - component: {fileID: 212840168552978936}
-  m_Layer: 0
-  m_Name: Racket Sprite2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1252322246133254
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,6 +24,22 @@ GameObject:
   m_Layer: 0
   m_Name: Racket Pivot
   m_TagString: Racket
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1428548783172734
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4136928781166880}
+  - component: {fileID: 212830272387758566}
+  m_Layer: 0
+  m_Name: Racket Sprite2
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,12 +124,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4255996551271066
+--- !u!4 &4136928781166880
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1215457951689034}
+  m_GameObject: {fileID: 1428548783172734}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.8, y: 0, z: 0}
   m_LocalScale: {x: 1.6, y: 0.2, z: 1}
@@ -203,7 +203,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4655277721784752}
-  - {fileID: 4255996551271066}
+  - {fileID: 4136928781166880}
   m_Father: {fileID: 4791691288128926}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -318,7 +318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f26e1c4cd26df4eb4f9a5bbda9a4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isChargingHit: 0
   timeChargingHit: 0
   hitBasePower: 30
   hitPowerPerSecCharging: 5
@@ -326,8 +325,6 @@ MonoBehaviour:
   hitDuration: 0.2
   timeHitting: 0
   hitSpeed: 500
-  racketCounterRotation: -0.5
-  racketRotationSpeed: 200
   smashMaxCharge: 100
   smashCurrentCharge: 0
   amountOfChargeToSmash: 25
@@ -427,12 +424,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!212 &212840168552978936
+--- !u!212 &212830272387758566
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1215457951689034}
+  m_GameObject: {fileID: 1428548783172734}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

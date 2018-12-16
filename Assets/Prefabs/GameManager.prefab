@@ -87,6 +87,7 @@ MonoBehaviour:
   scorePlayer2: {fileID: 0}
   gaugeSmashPlayer1: {fileID: 0}
   gaugeSmashPlayer2: {fileID: 0}
+  panelControllerMenu: {fileID: 0}
 --- !u!114 &114568588324245146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9785c5afc5f55e14396336dc15aeae60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberPlayersRequired: 2
 --- !u!114 &114805982630566242
 MonoBehaviour:
   m_ObjectHideFlags: 1

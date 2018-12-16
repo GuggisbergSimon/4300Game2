@@ -29,6 +29,7 @@ public class Racket : MonoBehaviour
 	private bool isFacingRightAtStartup;
 	private bool hitBall = false;
 	private RacketStates myState = RacketStates.Idle;
+	private Quaternion rotationBeforeHitting;
 	public float SmashMaxCharge => smashMaxCharge;
 	public float SmashCurrentCharge => smashCurrentCharge;
 	public float AmountOfChargeToSmash => amountOfChargeToSmash;
@@ -75,6 +76,7 @@ public class Racket : MonoBehaviour
 					if (player.MyController.RightTrigger.WasPressed && smashCurrentCharge >= amountOfChargeToSmash)
 					{
 						smashCurrentCharge -= amountOfChargeToSmash;
+						GameManager.Instance.UpdateUI();
 						myState = RacketStates.PrepareToSmash;
 					}
 					else if (player.MyController.RightBumper.WasPressed)
@@ -92,6 +94,7 @@ public class Racket : MonoBehaviour
 					{
 						GameManager.Instance.ChangeTimeScale(1.0f);
 						myState = RacketStates.Smashing;
+						rotationBeforeHitting = transform.rotation;
 					}
 
 					break;
@@ -108,6 +111,7 @@ public class Racket : MonoBehaviour
 					if (player.MyController.RightBumper.WasReleased)
 					{
 						myState = RacketStates.Hitting;
+						rotationBeforeHitting = transform.rotation;
 					}
 
 					break;
@@ -122,6 +126,7 @@ public class Racket : MonoBehaviour
 						timeChargingHit = 0.0f;
 						hitBall = false;
 						myState = RacketStates.Idle;
+						transform.rotation = rotationBeforeHitting;
 					}
 
 					break;
@@ -135,6 +140,7 @@ public class Racket : MonoBehaviour
 						timeHitting = 0.0f;
 						hitBall = false;
 						myState = RacketStates.Idle;
+						transform.rotation = rotationBeforeHitting;
 					}
 
 					break;
@@ -170,7 +176,17 @@ public class Racket : MonoBehaviour
 	private void SendBall(float power)
 	{
 		hitBall = true;
-		ball.SetVelocity(racketDirection * power);
+		if (player.PlayerNumber != ball.LastPlayerHitting)
+		{
+			ball.LastPlayerHitting = player.PlayerNumber;
+			ball.SetVelocity(racketDirection * power);
+		}
+		else
+		{
+			ball.LastPlayerHitting = ball.LastPlayerHitting.GetOpponent();
+			GameManager.Instance.MyMatchManager.AddPointTo(player.PlayerNumber.GetOpponent());
+		}
+
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -193,7 +209,6 @@ public class Racket : MonoBehaviour
 						smashCurrentCharge = smashMaxCharge;
 					}
 
-					Debug.Log("ball hit, SmashCharge is : " + smashCurrentCharge);
 					float hitPower = hitBasePower + hitPowerPerSecCharging * timeChargingHit;
 					SendBall(hitPower);
 					break;

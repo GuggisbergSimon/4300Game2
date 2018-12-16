@@ -9,6 +9,13 @@ public class Ball : MonoBehaviour
 	[SerializeField] private float smashChargePerSpeed = 2.0f;
 
 	private playerNumber lastPlayerHitting = playerNumber.Player1;
+
+	public playerNumber LastPlayerHitting
+	{
+		get { return lastPlayerHitting; }
+		set { lastPlayerHitting = value; }
+	}
+
 	private Rigidbody2D myRigidbody2D;
 	private SpriteRenderer mySpriteRenderer;
 	private Collider2D myCollider2D;
@@ -51,12 +58,12 @@ public class Ball : MonoBehaviour
 	private void OnCollisionEnter2D(Collision2D other)
 	{
 		GameObject collisionObject = other.gameObject;
-
 		switch (collisionObject.tag)
 		{
 			case "Border":
 			{
 				GameManager.Instance.MyMatchManager.AddPointTo(lastPlayerHitting.GetOpponent());
+				lastPlayerHitting = lastPlayerHitting.GetOpponent();
 				break;
 			}
 			case "Ground":
@@ -69,6 +76,7 @@ public class Ball : MonoBehaviour
 				else
 				{
 					GameManager.Instance.MyMatchManager.AddPointTo(lastPlayerHitting.GetOpponent());
+					lastPlayerHitting = lastPlayerHitting.GetOpponent();
 				}
 
 				break;
@@ -76,26 +84,14 @@ public class Ball : MonoBehaviour
 			case "Net":
 			{
 				GameManager.Instance.MyMatchManager.AddPointTo(lastPlayerHitting.GetOpponent());
+				lastPlayerHitting = lastPlayerHitting.GetOpponent();
 				break;
 			}
 			case "Player":
 			{
 				PlayerMove player = collisionObject.GetComponent<PlayerMove>();
 				GameManager.Instance.MyMatchManager.AddPointTo(player.PlayerNumber.GetOpponent());
-				break;
-			}
-			case "Racket":
-			{
-				PlayerMove player = collisionObject.GetComponentInParent<PlayerMove>();
-				if (player.PlayerNumber != lastPlayerHitting)
-				{
-					lastPlayerHitting = player.PlayerNumber;
-				}
-				else
-				{
-					GameManager.Instance.MyMatchManager.AddPointTo(player.PlayerNumber.GetOpponent());
-				}
-
+				lastPlayerHitting = player.PlayerNumber.GetOpponent();
 				break;
 			}
 		}
