@@ -216,4 +216,32 @@ public class Racket : MonoBehaviour
 			}
 		}
 	}
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == ("Ball") && !hitBall)
+        {
+            switch (myState)
+            {
+                case RacketStates.Smashing:
+                    {
+                        SendBall(smashPower);
+                        break;
+                    }
+                case RacketStates.Hitting:
+                    {
+                        smashCurrentCharge += ball.GetSmashCharge();
+                        GameManager.Instance.UpdateUI();
+                        if (smashCurrentCharge > smashMaxCharge)
+                        {
+                            smashCurrentCharge = smashMaxCharge;
+                        }
+
+                        float hitPower = hitBasePower + hitPowerPerSecCharging * timeChargingHit;
+                        SendBall(hitPower);
+                        break;
+                    }
+            }
+        }
+    }
 }

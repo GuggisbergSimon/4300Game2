@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-	[SerializeField] private int numberPlayersRequired = 2;
+	[SerializeField] private int numberPlayersRequired = 1;
 	private IReadOnlyCollection<InputDevice> inputDevices;
 
 	private static GameManager instance = null;

@@ -230,6 +230,11 @@ Prefab:
       propertyPath: panelControllerMenu
       value: 
       objectReference: {fileID: 1703092752}
+    - target: {fileID: 114601920121862340, guid: 8c01cdbe47882dd4ba16bda7fc1b24f5,
+        type: 2}
+      propertyPath: numberPlayersRequired
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c01cdbe47882dd4ba16bda7fc1b24f5, type: 2}
   m_IsPrefabAsset: 0
