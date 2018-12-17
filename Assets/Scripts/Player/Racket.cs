@@ -69,20 +69,19 @@ public class Racket : MonoBehaviour
 	{
 		if (player.MyController != null)
 		{
-			Debug.DrawLine(transform.position, transform.position + (Vector3) racketDirection * 4.0f);
 			switch (myState)
 			{
 				case RacketStates.Idle:
 				{
 					rotationBeforeHitting = transform.rotation;
 					RotateRacketThroughInput();
-					if (player.MyController.RightTrigger.WasPressed && smashCurrentCharge >= amountOfChargeToSmash)
+					if ((player.MyController.RightTrigger.WasPressed || player.MyController.LeftTrigger.WasPressed) && smashCurrentCharge >= amountOfChargeToSmash)
 					{
 						smashCurrentCharge -= amountOfChargeToSmash;
 						GameManager.Instance.UpdateUI();
 						myState = RacketStates.PrepareToSmash;
 					}
-					else if (player.MyController.RightBumper.WasPressed)
+					else if (player.MyController.RightBumper.WasPressed || player.MyController.LeftBumper.WasPressed)
 					{
 						myState = RacketStates.PrepareToHit;
 					}
@@ -93,7 +92,7 @@ public class Racket : MonoBehaviour
 				{
 					RotateRacketThroughInput();
 					GameManager.Instance.ChangeTimeScale(smashTimeScale);
-					if (player.MyController.RightTrigger.WasReleased)
+					if (player.MyController.RightTrigger.WasReleased || player.MyController.LeftTrigger.WasReleased)
 					{
 						GameManager.Instance.ChangeTimeScale(1.0f);
 						myState = RacketStates.Smashing;
@@ -111,7 +110,7 @@ public class Racket : MonoBehaviour
 						timeChargingHit = maximumChargingTime;
 					}
 
-					if (player.MyController.RightBumper.WasReleased)
+					if (player.MyController.RightBumper.WasReleased || player.MyController.LeftBumper.WasReleased)
 					{
 						myState = RacketStates.Hitting;
 						rotationBeforeHitting = transform.rotation;

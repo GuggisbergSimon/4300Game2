@@ -325,6 +325,7 @@ MonoBehaviour:
   playerRigidbody2D: {fileID: 50565105050088656}
   playerMaxSpeed: 5
   playerAcceleration: 70
+  jumpThreshold: 0.3
   playerJumpSpeed: 20
   playerIsJumping: 0
 --- !u!114 &114659943061785880

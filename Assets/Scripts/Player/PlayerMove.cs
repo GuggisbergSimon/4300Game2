@@ -9,9 +9,10 @@ public class PlayerMove : MonoBehaviour
 	[SerializeField] private Rigidbody2D playerRigidbody2D;
 	[SerializeField] private float playerMaxSpeed = 14.0f;
 	[SerializeField] private float playerAcceleration = 70.0f;
-
+	[SerializeField] private float jumpThreshold = 0.1f;
 	[SerializeField] private float playerJumpSpeed = 20.0f;
 	[SerializeField] private bool playerIsJumping = false;
+
 
 	private InputDevice myController;
 	public InputDevice MyController => myController;
@@ -56,8 +57,8 @@ public class PlayerMove : MonoBehaviour
 
 				playerRigidbody2D.velocity = playerNewVelocity;
 			}
-
-			if (myController.Action1.WasPressed && !playerIsJumping)
+			
+			if (myController.LeftStickY > jumpThreshold && !playerIsJumping)
 			{
 				playerIsJumping = true;
 				playerRigidbody2D.velocity += new Vector2(0.0f, playerJumpSpeed);
