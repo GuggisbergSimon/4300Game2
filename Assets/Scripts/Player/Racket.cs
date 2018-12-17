@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using InControl;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Racket : MonoBehaviour
 {
@@ -23,7 +20,7 @@ public class Racket : MonoBehaviour
 	[SerializeField] private float smashSpeed = 1000.0f;
 	[SerializeField] private float smashDuration = 0.1f;
 
-	private Ball ball;
+    private Ball ball;
 	private PlayerMove player;
 	private Vector2 racketDirection;
 	private bool isFacingRightAtStartup;
@@ -197,7 +194,8 @@ public class Racket : MonoBehaviour
 			{
 				case RacketStates.Smashing:
 				{
-					SendBall(smashPower);
+                    ball.SetTrailActive(true);
+                    SendBall(smashPower);
 					break;
 				}
 				case RacketStates.Hitting:
