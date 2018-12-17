@@ -10,6 +10,7 @@ public class Racket : MonoBehaviour
 	[SerializeField] private float hitPowerPerSecCharging = 5.0f;
 	[SerializeField] private float maximumChargingTime = 5.0f;
 	[SerializeField] private float hitDuration = 0.2f;
+
 	[SerializeField] private float hitSpeed = 500.0f;
 
 	//[SerializeField] private float racketCounterRotation = -0.5f;
@@ -27,9 +28,9 @@ public class Racket : MonoBehaviour
 	private bool isFacingRightAtStartup;
 	private bool hitBall = false;
 	private RacketStates myState = RacketStates.Idle;
-	private Quaternion rotationBeforeHitting;
 	private float timeHitting = 0.0f;
-
+	private Quaternion rotationBeforeHitting;
+	public Quaternion RotationBeforeHitting => rotationBeforeHitting;
 	public float SmashMaxCharge => smashMaxCharge;
 	private float smashCurrentCharge = 0.0f;
 	public float SmashCurrentCharge => smashCurrentCharge;
@@ -73,6 +74,7 @@ public class Racket : MonoBehaviour
 			{
 				case RacketStates.Idle:
 				{
+					rotationBeforeHitting = transform.rotation;
 					RotateRacketThroughInput();
 					if (player.MyController.RightTrigger.WasPressed && smashCurrentCharge >= amountOfChargeToSmash)
 					{
