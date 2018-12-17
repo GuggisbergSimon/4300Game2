@@ -164,7 +164,7 @@ Transform:
   m_GameObject: {fileID: 1447251345717600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4663934944047370}
   m_Father: {fileID: 4947472116620366}
@@ -244,7 +244,7 @@ Transform:
   m_GameObject: {fileID: 1506686557570076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4, y: -1.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4894847875495920}
   - {fileID: 4465238367599556}
@@ -323,17 +323,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeChargingHit: 0
-  hitBasePower: 30
+  hitBasePower: 10
   hitPowerPerSecCharging: 5
   maximumChargingTime: 5
   hitDuration: 0.2
-  timeHitting: 0
   hitSpeed: 500
   smashMaxCharge: 100
-  smashCurrentCharge: 0
   amountOfChargeToSmash: 25
-  smashTimeScale: 0.5
-  smashPower: 50
+  smashTimeScale: 0.3
+  smashPower: 40
   smashSpeed: 1000
   smashDuration: 0.1
 --- !u!114 &114870207745275486
@@ -348,7 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRigidbody2D: {fileID: 50789775536640590}
-  playerMaxSpeed: 14
+  playerMaxSpeed: 5
   playerAcceleration: 70
   playerJumpSpeed: 20
   playerIsJumping: 0

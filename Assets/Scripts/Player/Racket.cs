@@ -10,13 +10,11 @@ public class Racket : MonoBehaviour
 	[SerializeField] private float hitPowerPerSecCharging = 5.0f;
 	[SerializeField] private float maximumChargingTime = 5.0f;
 	[SerializeField] private float hitDuration = 0.2f;
-	[SerializeField] private float timeHitting = 0.0f;
 	[SerializeField] private float hitSpeed = 500.0f;
 
 	//[SerializeField] private float racketCounterRotation = -0.5f;
 	//[SerializeField] private float racketRotationSpeed = 50.0f;
 	[SerializeField] private float smashMaxCharge = 100.0f;
-	[SerializeField] private float smashCurrentCharge = 0.0f;
 	[SerializeField] private float amountOfChargeToSmash = 25.0f;
 	[SerializeField] private float smashTimeScale = 0.5f;
 	[SerializeField] private float smashPower = 50.0f;
@@ -30,7 +28,10 @@ public class Racket : MonoBehaviour
 	private bool hitBall = false;
 	private RacketStates myState = RacketStates.Idle;
 	private Quaternion rotationBeforeHitting;
+	private float timeHitting = 0.0f;
+
 	public float SmashMaxCharge => smashMaxCharge;
+	private float smashCurrentCharge = 0.0f;
 	public float SmashCurrentCharge => smashCurrentCharge;
 	public float AmountOfChargeToSmash => amountOfChargeToSmash;
 
@@ -186,7 +187,6 @@ public class Racket : MonoBehaviour
 			ball.LastPlayerHitting = ball.LastPlayerHitting.GetOpponent();
 			GameManager.Instance.MyMatchManager.AddPointTo(player.PlayerNumber.GetOpponent());
 		}
-
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)

@@ -174,7 +174,7 @@ Transform:
   m_GameObject: {fileID: 1252322246133254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4791691288128926}
   m_Father: {fileID: 4712889561024294}
@@ -201,7 +201,7 @@ Transform:
   m_GameObject: {fileID: 1487118437034034}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: -4, y: -1.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4276556692219966}
   - {fileID: 4284876198326838}
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRigidbody2D: {fileID: 50565105050088656}
-  playerMaxSpeed: 14
+  playerMaxSpeed: 5
   playerAcceleration: 70
   playerJumpSpeed: 20
   playerIsJumping: 0
@@ -339,17 +339,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeChargingHit: 0
-  hitBasePower: 30
+  hitBasePower: 10
   hitPowerPerSecCharging: 5
   maximumChargingTime: 5
   hitDuration: 0.2
-  timeHitting: 0
   hitSpeed: 500
   smashMaxCharge: 100
-  smashCurrentCharge: 0
   amountOfChargeToSmash: 25
-  smashTimeScale: 0.5
-  smashPower: 50
+  smashTimeScale: 0.3
+  smashPower: 40
   smashSpeed: 1000
   smashDuration: 0.1
 --- !u!212 &212309799545444186
