@@ -75,7 +75,8 @@ public class Racket : MonoBehaviour
 				{
 					rotationBeforeHitting = transform.rotation;
 					RotateRacketThroughInput();
-					if ((player.MyController.RightTrigger.WasPressed || player.MyController.LeftTrigger.WasPressed) && smashCurrentCharge >= amountOfChargeToSmash)
+					if ((player.MyController.RightTrigger.WasPressed || player.MyController.LeftTrigger.WasPressed) &&
+					    smashCurrentCharge >= amountOfChargeToSmash)
 					{
 						smashCurrentCharge -= amountOfChargeToSmash;
 						GameManager.Instance.UpdateUI();
@@ -92,11 +93,11 @@ public class Racket : MonoBehaviour
 				{
 					RotateRacketThroughInput();
 					GameManager.Instance.ChangeTimeScale(smashTimeScale);
+					rotationBeforeHitting = transform.rotation;
 					if (player.MyController.RightTrigger.WasReleased || player.MyController.LeftTrigger.WasReleased)
 					{
 						GameManager.Instance.ChangeTimeScale(1.0f);
 						myState = RacketStates.Smashing;
-						rotationBeforeHitting = transform.rotation;
 					}
 
 					break;
@@ -105,6 +106,7 @@ public class Racket : MonoBehaviour
 				{
 					RotateRacketThroughInput();
 					timeChargingHit += Time.deltaTime;
+					rotationBeforeHitting = transform.rotation;
 					if (timeChargingHit > maximumChargingTime)
 					{
 						timeChargingHit = maximumChargingTime;
@@ -191,6 +193,16 @@ public class Racket : MonoBehaviour
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		HandleCollision(collision);
+	}
+
+	private void OnTriggerStay2D(Collider2D collision)
+	{
+		HandleCollision(collision);
+	}
+
+	private void HandleCollision(Collider2D collision)
 	{
 		if (collision.gameObject.tag == ("Ball") && !hitBall)
 		{

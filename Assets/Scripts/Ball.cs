@@ -46,6 +46,7 @@ public class Ball : MonoBehaviour
 
 		myCollider2D.enabled = true;
 		myRigidbody2D.gravityScale = gravityScale;
+		Debug.Log(myRigidbody2D.gravityScale);
 	}
 
 	private void Awake()
