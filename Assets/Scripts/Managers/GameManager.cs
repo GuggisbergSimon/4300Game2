@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using InControl;
 using UnityEngine;
@@ -7,19 +8,36 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+	[SerializeField] private int numberPlayersRequired = 2;
+	private IReadOnlyCollection<InputDevice> inputDevices;
+
 	private static GameManager instance = null;
 	public static GameManager Instance => instance;
 
 	private GameObject ball;
 	public GameObject Ball => ball;
 
-	public GameObject[] players;
+	private PlayerMove[] players;
+	public PlayerMove[] Players => players;
 
 	private AudioManager myAudioManager;
+	private UIManager myUIManager;
 	public MatchManager MyMatchManager { get; private set; }
 
 	private bool inLevel = false;
 	public bool InLevel => inLevel;
+
+	private Dictionary<playerNumber, int> score = new Dictionary<playerNumber, int>()
+	{
+		{playerNumber.Player1, 0},
+		{playerNumber.Player2, 0}
+	};
+
+	public Dictionary<playerNumber, int> Score
+	{
+		get { return score; }
+		set { score = value; }
+	}
 
 	private void CheckEscape()
 	{
@@ -31,7 +49,6 @@ public class GameManager : MonoBehaviour
 
 	private void Awake()
 	{
-		var inputDevices = InputManager.Devices;
 		//checks if another instance of GameManager exists, if so, destroy it, ensuring that only one GameManager exists at all time.
 		if (instance != null && instance != this)
 		{
@@ -44,41 +61,58 @@ public class GameManager : MonoBehaviour
 		}
 
 		ball = GameObject.FindGameObjectWithTag("Ball");
-		players = GameObject.FindGameObjectsWithTag("Player");
+		GameObject[] playersObject = GameObject.FindGameObjectsWithTag("Player");
+		players = new PlayerMove[playersObject.Length];
+		for (int i = 0; i < playersObject.Length; i++)
+		{
+			players[i] = playersObject[i].GetComponent<PlayerMove>();
+		}
+
 		myAudioManager = GetComponent<AudioManager>();
 		MyMatchManager = GetComponent<MatchManager>();
+		myUIManager = GetComponent<UIManager>();
 
 		//checks if inlevel through the presence of a player
-		if (players.Length>0)
+		if (players.Length >= numberPlayersRequired)
 		{
 			inLevel = true;
-			for (int i = 0; i < players.Length; i++)
-			{
-				players[i].GetComponent<PlayerMove>().AssignController(inputDevices[i]);
-			}
+			ScanPlayers();
+			InputManager.OnDeviceDetached += inputDevices => ScanPlayers();
+			InputManager.OnDeviceAttached += inputDevices => ScanPlayers();
 		}
 
 		SortPlayers();
+	}
+
+	private void Start()
+	{
+		UpdateUI();
+	}
+
+	void ScanPlayers()
+	{
+		inputDevices = InputManager.Devices;
+		if (inputDevices.Count >= numberPlayersRequired)
+		{
+			for (int i = 0; i < players.Length; i++)
+			{
+				players[i].GetComponent<PlayerMove>().AssignController(inputDevices.ElementAt(i));
+			}
+			//TODO add message that players have be (re) assigned
+			myUIManager.ToggleControllerMenu(false);
+			ChangeTimeScale(1.0f);
+		}
+		else
+		{
+			ChangeTimeScale(0.0f);
+			myUIManager.ToggleControllerMenu(true);
+		}
 	}
 
 	private void Update()
 	{
 		if (inLevel)
 		{
-			//TODO Something only in level
-		}
-
-		//TODO remove this test
-		if (Input.GetButtonDown("Fire1"))
-		{
-			ChangeTimeScale(0.0f);
-			MyMatchManager.AddPointTo(playerNumber.Player1);
-			MyMatchManager.AddPointTo(playerNumber.Player1);
-			MyMatchManager.AddPointTo(playerNumber.Player2);
-		}
-		else if (Input.GetButtonUp("Fire1"))
-		{
-			ChangeTimeScale(1.0f);
 		}
 	}
 
@@ -94,7 +128,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public GameObject GetPlayer(playerNumber player)
+	public PlayerMove GetPlayer(playerNumber player)
 	{
 		if (player == playerNumber.Player1)
 		{
@@ -106,9 +140,13 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+	public void UpdateUI()
+	{
+		myUIManager.UpdateUI();
+	}
+
 	public void ChangeTimeScale(float timeScale)
 	{
-
 		Time.timeScale = timeScale;
 		myAudioManager.UpdateAudio();
 	}

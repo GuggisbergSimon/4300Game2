@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class MatchManager : MonoBehaviour
@@ -9,12 +10,6 @@ public class MatchManager : MonoBehaviour
 
 	private Vector2 engagePosition;
 	private Ball ball;
-
-	private Dictionary<playerNumber, int> score = new Dictionary<playerNumber, int>()
-	{
-		{playerNumber.Player1, 0},
-		{playerNumber.Player2, 0}
-	};
 
 	private void Start()
 	{
@@ -40,7 +35,8 @@ public class MatchManager : MonoBehaviour
 
 	public void AddPointTo(playerNumber player)
 	{
-		score[player]++;
+		GameManager.Instance.Score[player]++;
+		GameManager.Instance.UpdateUI();
 		Engage(player.GetOpponent());
 	}
 }

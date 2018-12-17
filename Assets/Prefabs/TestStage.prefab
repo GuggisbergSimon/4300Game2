@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 61788236358455182}
   m_Layer: 0
   m_Name: border right
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 61554347752906594}
   m_Layer: 0
   m_Name: border left
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
