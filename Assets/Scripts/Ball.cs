@@ -7,8 +7,10 @@ public class Ball : MonoBehaviour
 	[SerializeField] private float timeSetupNoFall = 1.5f;
 	[SerializeField] private int setupBlinkTimes = 5;
 	[SerializeField] private float smashChargePerSpeed = 2.0f;
+    [SerializeField] private Color smashTrailColor = Color.red;
+    [SerializeField] private Color hitTrailColor = Color.yellow;
 
-	private playerNumber lastPlayerHitting = playerNumber.Player1;
+    private playerNumber lastPlayerHitting = playerNumber.Player1;
 
 	public playerNumber LastPlayerHitting
 	{
@@ -113,8 +115,16 @@ public class Ball : MonoBehaviour
 		return smashChargePerSpeed * myRigidbody2D.velocity.magnitude;
 	}
 
-    public void SetTrailActive(bool trailActive)
+    public void SetTrailActive(bool trailActive, bool smashed)
     {
+        if(smashed)
+        {
+            myTrailRenderer.startColor = smashTrailColor;
+        }
+        else
+        {
+            myTrailRenderer.startColor = hitTrailColor;
+        }
         myTrailRenderer.enabled = trailActive;
     }
 }

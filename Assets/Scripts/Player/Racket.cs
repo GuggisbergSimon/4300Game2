@@ -19,6 +19,7 @@ public class Racket : MonoBehaviour
 	[SerializeField] private float smashPower = 50.0f;
 	[SerializeField] private float smashSpeed = 1000.0f;
 	[SerializeField] private float smashDuration = 0.1f;
+    [SerializeField] private float prepareToSmashMaximumDuration = 1.5f;
 
     private Ball ball;
 	private PlayerMove player;
@@ -30,6 +31,7 @@ public class Racket : MonoBehaviour
 	public float SmashMaxCharge => smashMaxCharge;
 	public float SmashCurrentCharge => smashCurrentCharge;
 	public float AmountOfChargeToSmash => amountOfChargeToSmash;
+    private float prepareToSmashDuration;
 
 	private enum RacketStates
 	{
@@ -87,12 +89,15 @@ public class Racket : MonoBehaviour
 				{
 					RotateRacketThroughInput();
 					GameManager.Instance.ChangeTimeScale(smashTimeScale);
-					if (player.MyController.RightTrigger.WasReleased)
-					{
-						GameManager.Instance.ChangeTimeScale(1.0f);
-						myState = RacketStates.Smashing;
-						rotationBeforeHitting = transform.rotation;
-					}
+                    prepareToSmashDuration += Time.deltaTime;
+                    if (player.MyController.RightTrigger.WasReleased || (prepareToSmashDuration >= prepareToSmashMaximumDuration))
+                    {
+                        prepareToSmashDuration = 0.0f;
+                        GameManager.Instance.ChangeTimeScale(1.0f);
+                        myState = RacketStates.Smashing;
+                        rotationBeforeHitting = transform.rotation;
+                    }
+                        
 
 					break;
 				}
@@ -194,13 +199,14 @@ public class Racket : MonoBehaviour
 			{
 				case RacketStates.Smashing:
 				{
-                    ball.SetTrailActive(true);
+                    ball.SetTrailActive(true, true);
                     SendBall(smashPower);
 					break;
 				}
 				case RacketStates.Hitting:
 				{
-					smashCurrentCharge += ball.GetSmashCharge();
+                        ball.SetTrailActive(true, false);
+                        smashCurrentCharge += ball.GetSmashCharge();
 					GameManager.Instance.UpdateUI();
 					if (smashCurrentCharge > smashMaxCharge)
 					{
@@ -223,11 +229,13 @@ public class Racket : MonoBehaviour
             {
                 case RacketStates.Smashing:
                     {
+                        ball.SetTrailActive(true, true);
                         SendBall(smashPower);
                         break;
                     }
                 case RacketStates.Hitting:
                     {
+                        ball.SetTrailActive(true, false);
                         smashCurrentCharge += ball.GetSmashCharge();
                         GameManager.Instance.UpdateUI();
                         if (smashCurrentCharge > smashMaxCharge)
