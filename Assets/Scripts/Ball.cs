@@ -7,8 +7,10 @@ public class Ball : MonoBehaviour
 	[SerializeField] private float timeSetupNoFall = 1.5f;
 	[SerializeField] private int setupBlinkTimes = 5;
 	[SerializeField] private float smashChargePerSpeed = 2.0f;
+    [SerializeField] private Color smashTrailColor = Color.red;
+    [SerializeField] private Color hitTrailColor = Color.yellow;
 
-	private playerNumber lastPlayerHitting = playerNumber.Player1;
+    private playerNumber lastPlayerHitting = playerNumber.Player1;
 
 	public playerNumber LastPlayerHitting
 	{
@@ -19,6 +21,7 @@ public class Ball : MonoBehaviour
 	private Rigidbody2D myRigidbody2D;
 	private SpriteRenderer mySpriteRenderer;
 	private Collider2D myCollider2D;
+    private TrailRenderer myTrailRenderer;
 
 	public void SetVelocity(Vector2 velocity)
 	{
@@ -28,6 +31,12 @@ public class Ball : MonoBehaviour
 	public void SetGravityScale(float gravityScale)
 	{
 		myRigidbody2D.gravityScale = gravityScale;
+	}
+
+	public void ResetPhysics()
+	{
+		myRigidbody2D.gravityScale = 1.0f;
+		myCollider2D.enabled = true;
 	}
 
 	public IEnumerator Setup(Vector2 position)
@@ -51,7 +60,6 @@ public class Ball : MonoBehaviour
 
 		myCollider2D.enabled = true;
 		myRigidbody2D.gravityScale = gravityScale;
-		Debug.Log("GravityScale " + myRigidbody2D.gravityScale);
 	}
 
 	private void Awake()
@@ -59,12 +67,17 @@ public class Ball : MonoBehaviour
 		myRigidbody2D = GetComponent<Rigidbody2D>();
 		mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
 		myCollider2D = GetComponent<Collider2D>();
-	}
+        myTrailRenderer = GetComponent<TrailRenderer>();
+    }
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
 		GameObject collisionObject = other.gameObject;
-		switch (collisionObject.tag)
+        if (myTrailRenderer.enabled)
+        {
+            myTrailRenderer.enabled = false;
+        }
+        switch (collisionObject.tag)
 		{
 			case "Border":
 			{
@@ -112,4 +125,17 @@ public class Ball : MonoBehaviour
 	{
 		return smashChargePerSpeed * myRigidbody2D.velocity.magnitude;
 	}
+
+    public void SetTrailActive(bool trailActive, bool smashed)
+    {
+        if(smashed)
+        {
+            myTrailRenderer.startColor = smashTrailColor;
+        }
+        else
+        {
+            myTrailRenderer.startColor = hitTrailColor;
+        }
+        myTrailRenderer.enabled = trailActive;
+    }
 }

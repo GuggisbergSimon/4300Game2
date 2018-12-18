@@ -401,6 +401,11 @@ MonoBehaviour:
   smashPower: 40
   smashSpeed: 1000
   smashDuration: 0.2
+  prepareToSmashMaximumDuration: 1.5
+  timeCameraShaking: 0.2
+  amplitudeCameraShaking: 0.5
+  frequencyCameraShaking: 0.5
+  vcam: {fileID: 114098857255156458, guid: 7cc0e0925beb0c3418d81553be45f517, type: 2}
 --- !u!114 &114727564917952798
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using InControl;
+using Cinemachine;
 using UnityEngine;
 
 public class Racket : MonoBehaviour
@@ -21,7 +20,13 @@ public class Racket : MonoBehaviour
 	[SerializeField] private float smashPower = 50.0f;
 	[SerializeField] private float smashSpeed = 1000.0f;
 	[SerializeField] private float smashDuration = 0.1f;
+	[SerializeField] private float prepareToSmashMaximumDuration = 1.5f;
+	[SerializeField] private float timeCameraShaking = 0.2f;
+	[SerializeField] private float amplitudeCameraShaking = 2.0f;
+	[SerializeField] private float frequencyCameraShaking = 2.0f;
+	[SerializeField] private CinemachineVirtualCamera vcam;
 
+	private CinemachineBasicMultiChannelPerlin noise;
 	private Ball ball;
 	private PlayerMove player;
 	private Vector2 racketDirection;
@@ -35,6 +40,7 @@ public class Racket : MonoBehaviour
 	private float smashCurrentCharge = 0.0f;
 	public float SmashCurrentCharge => smashCurrentCharge;
 	public float AmountOfChargeToSmash => amountOfChargeToSmash;
+	private float prepareToSmashDuration;
 
 	private enum RacketStates
 	{
@@ -48,6 +54,7 @@ public class Racket : MonoBehaviour
 	void Start()
 	{
 		// TODO add gameManager method to change racketRotationSpeed
+		noise = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
 		ball = GameManager.Instance.Ball.GetComponent<Ball>();
 		player = GetComponentInParent<PlayerMove>();
@@ -100,15 +107,19 @@ public class Racket : MonoBehaviour
 				case RacketStates.PrepareToSmash:
 				{
 					RotateRacketThroughInput();
+					GameManager.Instance.ChangeTimeScale(smashTimeScale);
+					prepareToSmashDuration += Time.deltaTime;
 					rotationBeforeHitting = transform.rotation;
-					if (player.MyController.RightTrigger.WasReleased || player.MyController.LeftTrigger.WasReleased)
+					if (player.MyController.RightTrigger.WasReleased || player.MyController.LeftTrigger.WasReleased ||
+					    (prepareToSmashDuration >= prepareToSmashMaximumDuration))
 					{
+						prepareToSmashDuration = 0.0f;
 						GameManager.Instance.ChangeTimeScale(1.0f);
-						ball.SetGravityScale(1.0f);
+						myState = RacketStates.Smashing;
 						player.SetGravityScale(4.0f);
 						player.EnableMove = true;
 						SendBall(smashPower);
-						myState = RacketStates.Smashing;
+						ball.SetTrailActive(true, true);
 					}
 
 					break;
@@ -188,11 +199,26 @@ public class Racket : MonoBehaviour
 		}
 	}
 
+	private void ShakeCamera(float amplitudeGain, float frequencyGain)
+	{
+		noise.m_AmplitudeGain = amplitudeGain;
+		noise.m_FrequencyGain = frequencyGain;
+	}
+
+	private IEnumerator ShakeCameraFor(float time, float amplitudeGain, float frequencyGain)
+	{
+		ShakeCamera(amplitudeGain, frequencyGain);
+		yield return new WaitForSeconds(time);
+		ShakeCamera(0.0f, 0.0f);
+	}
+
 	private void SendBall(float power)
 	{
+		ball.ResetPhysics();
 		hitBall = true;
 		if (player.PlayerNumber != ball.LastPlayerHitting)
 		{
+			StartCoroutine(ShakeCameraFor(timeCameraShaking, power * amplitudeCameraShaking, frequencyCameraShaking));
 			ball.LastPlayerHitting = player.PlayerNumber;
 			ball.SetVelocity(racketDirection * power);
 		}
@@ -218,15 +244,48 @@ public class Racket : MonoBehaviour
 		if (collision.gameObject.tag == ("Ball") && !hitBall)
 		{
 			if (myState == RacketStates.Hitting)
-				smashCurrentCharge += ball.GetSmashCharge();
-			GameManager.Instance.UpdateUI();
-			if (smashCurrentCharge > smashMaxCharge)
 			{
-				smashCurrentCharge = smashMaxCharge;
-			}
+				ball.SetTrailActive(true, false);
+				smashCurrentCharge += ball.GetSmashCharge();
+				GameManager.Instance.UpdateUI();
+				if (smashCurrentCharge > smashMaxCharge)
+				{
+					smashCurrentCharge = smashMaxCharge;
+				}
 
-			float hitPower = hitBasePower + hitPowerPerSecCharging * timeChargingHit;
-			SendBall(hitPower);
+				float hitPower = hitBasePower + hitPowerPerSecCharging * timeChargingHit;
+				SendBall(hitPower);
+			}
 		}
 	}
+
+	/* private void OnTriggerStay2D(Collider2D collision)
+	 {
+	     if (collision.gameObject.tag == ("Ball") && !hitBall)
+	     {
+	         switch (myState)
+	         {
+	             case RacketStates.Smashing:
+	                 {
+	                     ball.SetTrailActive(true, true);
+	                     SendBall(smashPower);
+	                     break;
+	                 }
+	             case RacketStates.Hitting:
+	                 {
+	                     ball.SetTrailActive(true, false);
+	                     smashCurrentCharge += ball.GetSmashCharge();
+	                     GameManager.Instance.UpdateUI();
+	                     if (smashCurrentCharge > smashMaxCharge)
+	                     {
+	                         smashCurrentCharge = smashMaxCharge;
+	                     }
+   
+	                     float hitPower = hitBasePower + hitPowerPerSecCharging * timeChargingHit;
+	                     SendBall(hitPower);
+	                     break;
+	                 }
+	         }
+	     /
+	 }*/
 }
