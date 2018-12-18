@@ -508,10 +508,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197c1ede29772c54d93c76a39e0e7594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMaxSpeed: 14
-  playerAcceleration: 70
-  jumpThreshold: 0.1
-  playerJumpSpeed: 20
+  playerMaxSpeed: 7
+  playerAcceleration: 50
+  jumpThreshold: 0.3
+  playerJumpSpeed: 15
   playerIsJumping: 0
   jumpSound: {fileID: 8300000, guid: cb1f06e66d527c54c958cad5cb8a17fd, type: 3}
 --- !u!212 &212326520573183248
