@@ -158,6 +158,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114143008705830946, guid: 8c01cdbe47882dd4ba16bda7fc1b24f5,
+        type: 2}
+      propertyPath: vcam
+      value: 
+      objectReference: {fileID: 1477491936}
+    - target: {fileID: 114143008705830946, guid: 8c01cdbe47882dd4ba16bda7fc1b24f5,
+        type: 2}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 2039755828}
     - target: {fileID: 114423549701053202, guid: 8c01cdbe47882dd4ba16bda7fc1b24f5,
         type: 2}
       propertyPath: scorePlayer1
@@ -1177,6 +1187,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4947472116620366, guid: 03167730d30f00d42b83fa6e37f5b270,
     type: 2}
   m_PrefabInternal: {fileID: 1232707274}
+--- !u!114 &1477491936 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114098857255156458, guid: 7cc0e0925beb0c3418d81553be45f517,
+    type: 2}
+  m_PrefabInternal: {fileID: 1140814900}
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
 --- !u!1001 &1575643322
 Prefab:
   m_ObjectHideFlags: 0

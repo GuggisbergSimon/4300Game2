@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Cinemachine;
 using UnityEngine;
 
 public class Racket : MonoBehaviour
@@ -24,9 +23,7 @@ public class Racket : MonoBehaviour
 	[SerializeField] private float timeCameraShaking = 0.2f;
 	[SerializeField] private float amplitudeCameraShaking = 2.0f;
 	[SerializeField] private float frequencyCameraShaking = 2.0f;
-	[SerializeField] private CinemachineVirtualCamera vcam;
 
-	private CinemachineBasicMultiChannelPerlin noise;
 	private Ball ball;
 	private PlayerMove player;
 	private Vector2 racketDirection;
@@ -54,7 +51,6 @@ public class Racket : MonoBehaviour
 	void Start()
 	{
 		// TODO add gameManager method to change racketRotationSpeed
-		noise = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
 		ball = GameManager.Instance.Ball.GetComponent<Ball>();
 		player = GetComponentInParent<PlayerMove>();
@@ -199,18 +195,6 @@ public class Racket : MonoBehaviour
 		}
 	}
 
-	private void ShakeCamera(float amplitudeGain, float frequencyGain)
-	{
-		noise.m_AmplitudeGain = amplitudeGain;
-		noise.m_FrequencyGain = frequencyGain;
-	}
-
-	private IEnumerator ShakeCameraFor(float time, float amplitudeGain, float frequencyGain)
-	{
-		ShakeCamera(amplitudeGain, frequencyGain);
-		yield return new WaitForSeconds(time);
-		ShakeCamera(0.0f, 0.0f);
-	}
 
 	private void SendBall(float power)
 	{
@@ -218,7 +202,9 @@ public class Racket : MonoBehaviour
 		hitBall = true;
 		if (player.PlayerNumber != ball.LastPlayerHitting)
 		{
-			StartCoroutine(ShakeCameraFor(timeCameraShaking, power * amplitudeCameraShaking, frequencyCameraShaking));
+			StartCoroutine(GameManager.Instance.MyCameraManager.ShakeCameraFor(timeCameraShaking,
+				power * amplitudeCameraShaking, frequencyCameraShaking));
+			GameManager.Instance.MyCameraManager.ChangeColorBackground();
 			ball.LastPlayerHitting = player.PlayerNumber;
 			ball.SetVelocity(racketDirection * power);
 		}
@@ -258,34 +244,4 @@ public class Racket : MonoBehaviour
 			}
 		}
 	}
-
-	/* private void OnTriggerStay2D(Collider2D collision)
-	 {
-	     if (collision.gameObject.tag == ("Ball") && !hitBall)
-	     {
-	         switch (myState)
-	         {
-	             case RacketStates.Smashing:
-	                 {
-	                     ball.SetTrailActive(true, true);
-	                     SendBall(smashPower);
-	                     break;
-	                 }
-	             case RacketStates.Hitting:
-	                 {
-	                     ball.SetTrailActive(true, false);
-	                     smashCurrentCharge += ball.GetSmashCharge();
-	                     GameManager.Instance.UpdateUI();
-	                     if (smashCurrentCharge > smashMaxCharge)
-	                     {
-	                         smashCurrentCharge = smashMaxCharge;
-	                     }
-   
-	                     float hitPower = hitBasePower + hitPowerPerSecCharging * timeChargingHit;
-	                     SendBall(hitPower);
-	                     break;
-	                 }
-	         }
-	     /
-	 }*/
 }

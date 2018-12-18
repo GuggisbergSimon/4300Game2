@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
 	private AudioManager myAudioManager;
 	private UIManager myUIManager;
+	public CameraManager MyCameraManager { get; private set; }
 	public MatchManager MyMatchManager { get; private set; }
 
 	private bool inLevel = false;
@@ -71,6 +72,7 @@ public class GameManager : MonoBehaviour
 		myAudioManager = GetComponent<AudioManager>();
 		MyMatchManager = GetComponent<MatchManager>();
 		myUIManager = GetComponent<UIManager>();
+		MyCameraManager = GetComponent<CameraManager>();
 
 		//checks if inlevel through the presence of a player
 		if (players.Length >= numberPlayersRequired)
@@ -98,6 +100,7 @@ public class GameManager : MonoBehaviour
 			{
 				players[i].GetComponent<PlayerMove>().AssignController(inputDevices.ElementAt(i));
 			}
+
 			//TODO add message that players have be (re) assigned
 			myUIManager.ToggleControllerMenu(false);
 			ChangeTimeScale(1.0f);
