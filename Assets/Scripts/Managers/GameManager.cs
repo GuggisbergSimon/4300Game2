@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using InControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,6 +21,7 @@ public class GameManager : MonoBehaviour
 
 	private AudioManager myAudioManager;
 	private UIManager myUIManager;
+	public CameraManager MyCameraManager { get; private set; }
 	public MatchManager MyMatchManager { get; private set; }
 
 	private bool inLevel = false;
@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
 		myAudioManager = GetComponent<AudioManager>();
 		MyMatchManager = GetComponent<MatchManager>();
 		myUIManager = GetComponent<UIManager>();
+		MyCameraManager = GetComponent<CameraManager>();
 
 		//checks if inlevel through the presence of a player
 		if (players.Length >= numberPlayersRequired)
@@ -98,6 +99,7 @@ public class GameManager : MonoBehaviour
 			{
 				players[i].GetComponent<PlayerMove>().AssignController(inputDevices.ElementAt(i));
 			}
+
 			//TODO add message that players have be (re) assigned
 			myUIManager.ToggleControllerMenu(false);
 			ChangeTimeScale(1.0f);
@@ -106,13 +108,6 @@ public class GameManager : MonoBehaviour
 		{
 			ChangeTimeScale(0.0f);
 			myUIManager.ToggleControllerMenu(true);
-		}
-	}
-
-	private void Update()
-	{
-		if (inLevel)
-		{
 		}
 	}
 
