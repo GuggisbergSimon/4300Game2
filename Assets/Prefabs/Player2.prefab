@@ -481,7 +481,10 @@ MonoBehaviour:
   smashSpeed: 1000
   smashDuration: 0.2
   prepareToSmashMaximumDuration: 1.5
---- !u!114 &114672550494648260
+  timeCameraShaking: 0.2
+  amplitudeCameraShaking: 0.5
+  frequencyCameraShaking: 0.5
+--- !u!114 &114870207745275486
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

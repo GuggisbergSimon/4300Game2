@@ -511,7 +511,22 @@ MonoBehaviour:
   smashSpeed: 1000
   smashDuration: 0.2
   prepareToSmashMaximumDuration: 1.5
---- !u!212 &212224733102610024
+  timeCameraShaking: 0.2
+  amplitudeCameraShaking: 0.5
+  frequencyCameraShaking: 0.5
+--- !u!114 &114727564917952798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1309206804861612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8433a2cefecf6a849a2094481f954af7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  racket: {fileID: 114659943061785880}
+--- !u!212 &212309799545444186
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

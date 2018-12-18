@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Racket : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class Racket : MonoBehaviour
 	[SerializeField] private float smashSpeed = 1000.0f;
 	[SerializeField] private float smashDuration = 0.1f;
 	[SerializeField] private float prepareToSmashMaximumDuration = 1.5f;
+	[SerializeField] private float timeCameraShaking = 0.2f;
+	[SerializeField] private float amplitudeCameraShaking = 2.0f;
+	[SerializeField] private float frequencyCameraShaking = 2.0f;
 
 	private Ball ball;
 	private PlayerMove player;
@@ -27,11 +31,9 @@ public class Racket : MonoBehaviour
 	private bool hitBall = false;
 	private RacketStates myState = RacketStates.Idle;
 	private float timeHitting = 0.0f;
-	private Quaternion rotationBeforeHitting;
-	public Quaternion RotationBeforeHitting => rotationBeforeHitting;
+	public Quaternion RotationBeforeHitting { get; private set; }
 	public float SmashMaxCharge => smashMaxCharge;
-	private float smashCurrentCharge = 0.0f;
-	public float SmashCurrentCharge => smashCurrentCharge;
+	public float SmashCurrentCharge { get; private set; } = 0.0f;
 	public float AmountOfChargeToSmash => amountOfChargeToSmash;
 	private float prepareToSmashDuration;
 
@@ -72,13 +74,13 @@ public class Racket : MonoBehaviour
 			{
 				case RacketStates.Idle:
 				{
-					rotationBeforeHitting = transform.rotation;
+					RotationBeforeHitting = transform.rotation;
 					RotateRacketThroughInput();
 					if ((player.MyController.RightTrigger.WasPressed || player.MyController.LeftTrigger.WasPressed) &&
-					    smashCurrentCharge >= amountOfChargeToSmash && Mathf.Sign(ball.transform.position.x)
+					    SmashCurrentCharge >= amountOfChargeToSmash && Mathf.Sign(ball.transform.position.x)
 						    .CompareTo(Mathf.Sign(player.transform.position.x)) == 0)
 					{
-						smashCurrentCharge -= amountOfChargeToSmash;
+						SmashCurrentCharge -= amountOfChargeToSmash;
 						GameManager.Instance.UpdateUI();
 						GameManager.Instance.ChangeTimeScale(smashTimeScale);
 						player.transform.position = (Vector2) ball.transform.position - aimPosition;
@@ -101,15 +103,13 @@ public class Racket : MonoBehaviour
 					RotateRacketThroughInput();
 					GameManager.Instance.ChangeTimeScale(smashTimeScale);
 					prepareToSmashDuration += Time.deltaTime;
-					rotationBeforeHitting = transform.rotation;
+					RotationBeforeHitting = transform.rotation;
 					if (player.MyController.RightTrigger.WasReleased || player.MyController.LeftTrigger.WasReleased ||
 					    (prepareToSmashDuration >= prepareToSmashMaximumDuration))
 					{
 						prepareToSmashDuration = 0.0f;
 						GameManager.Instance.ChangeTimeScale(1.0f);
 						myState = RacketStates.Smashing;
-
-						ball.SetGravityScale(1.0f);
 						player.SetGravityScale(4.0f);
 						player.EnableMove = true;
 						SendBall(smashPower);
@@ -122,7 +122,7 @@ public class Racket : MonoBehaviour
 				{
 					RotateRacketThroughInput();
 					timeChargingHit += Time.deltaTime;
-					rotationBeforeHitting = transform.rotation;
+					RotationBeforeHitting = transform.rotation;
 					if (timeChargingHit > maximumChargingTime)
 					{
 						timeChargingHit = maximumChargingTime;
@@ -131,7 +131,7 @@ public class Racket : MonoBehaviour
 					if (player.MyController.RightBumper.WasReleased || player.MyController.LeftBumper.WasReleased)
 					{
 						myState = RacketStates.Hitting;
-						rotationBeforeHitting = transform.rotation;
+						RotationBeforeHitting = transform.rotation;
 					}
 
 					break;
@@ -146,7 +146,7 @@ public class Racket : MonoBehaviour
 						timeChargingHit = 0.0f;
 						hitBall = false;
 						myState = RacketStates.Idle;
-						transform.rotation = rotationBeforeHitting;
+						transform.rotation = RotationBeforeHitting;
 					}
 
 					break;
@@ -160,7 +160,7 @@ public class Racket : MonoBehaviour
 						timeHitting = 0.0f;
 						hitBall = false;
 						myState = RacketStates.Idle;
-						transform.rotation = rotationBeforeHitting;
+						transform.rotation = RotationBeforeHitting;
 					}
 
 					break;
@@ -193,11 +193,16 @@ public class Racket : MonoBehaviour
 		}
 	}
 
+
 	private void SendBall(float power)
 	{
+		ball.ResetPhysics();
 		hitBall = true;
 		if (player.PlayerNumber != ball.LastPlayerHitting)
 		{
+			StartCoroutine(GameManager.Instance.MyCameraManager.ShakeCameraFor(timeCameraShaking,
+				power * amplitudeCameraShaking, frequencyCameraShaking));
+			GameManager.Instance.MyCameraManager.ChangeColorBackground();
 			ball.LastPlayerHitting = player.PlayerNumber;
 			ball.SetVelocity(racketDirection * power);
 		}
@@ -225,11 +230,11 @@ public class Racket : MonoBehaviour
 			if (myState == RacketStates.Hitting)
 			{
 				ball.SetTrailActive(true, false);
-				smashCurrentCharge += ball.GetSmashCharge();
+				SmashCurrentCharge += ball.GetSmashCharge();
 				GameManager.Instance.UpdateUI();
-				if (smashCurrentCharge > smashMaxCharge)
+				if (SmashCurrentCharge > smashMaxCharge)
 				{
-					smashCurrentCharge = smashMaxCharge;
+					SmashCurrentCharge = smashMaxCharge;
 				}
 
 				float hitPower = hitBasePower + hitPowerPerSecCharging * timeChargingHit;
@@ -237,34 +242,4 @@ public class Racket : MonoBehaviour
 			}
 		}
 	}
-
-	/* private void OnTriggerStay2D(Collider2D collision)
-	 {
-	     if (collision.gameObject.tag == ("Ball") && !hitBall)
-	     {
-	         switch (myState)
-	         {
-	             case RacketStates.Smashing:
-	                 {
-	                     ball.SetTrailActive(true, true);
-	                     SendBall(smashPower);
-	                     break;
-	                 }
-	             case RacketStates.Hitting:
-	                 {
-	                     ball.SetTrailActive(true, false);
-	                     smashCurrentCharge += ball.GetSmashCharge();
-	                     GameManager.Instance.UpdateUI();
-	                     if (smashCurrentCharge > smashMaxCharge)
-	                     {
-	                         smashCurrentCharge = smashMaxCharge;
-	                     }
-   
-	                     float hitPower = hitBasePower + hitPowerPerSecCharging * timeChargingHit;
-	                     SendBall(hitPower);
-	                     break;
-	                 }
-	         }
-	     /
-	 }*/
 }
