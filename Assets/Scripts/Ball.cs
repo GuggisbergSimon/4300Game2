@@ -9,6 +9,9 @@ public class Ball : MonoBehaviour
 	[SerializeField] private float smashChargePerSpeed = 2.0f;
     [SerializeField] private Color smashTrailColor = Color.red;
     [SerializeField] private Color hitTrailColor = Color.yellow;
+    [SerializeField] private AudioClip hitSound;
+    [SerializeField] private AudioClip smashSound;
+    [SerializeField] private AudioClip hitPlayerSound;
 
     private playerNumber lastPlayerHitting = playerNumber.Player1;
 
@@ -22,8 +25,9 @@ public class Ball : MonoBehaviour
 	private SpriteRenderer mySpriteRenderer;
 	private Collider2D myCollider2D;
     private TrailRenderer myTrailRenderer;
+    private AudioSource myAudioSource;
 
-	public void SetVelocity(Vector2 velocity)
+    public void SetVelocity(Vector2 velocity)
 	{
 		myRigidbody2D.velocity = velocity;
 	}
@@ -63,6 +67,7 @@ public class Ball : MonoBehaviour
 		mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
 		myCollider2D = GetComponent<Collider2D>();
         myTrailRenderer = GetComponent<TrailRenderer>();
+        myAudioSource = GetComponent<AudioSource>();
     }
 
 	private void OnCollisionEnter2D(Collision2D other)
@@ -103,6 +108,7 @@ public class Ball : MonoBehaviour
 			}
 			case "Player":
 			{
+                myAudioSource.PlayOneShot(hitPlayerSound);
 				PlayerMove player = collisionObject.GetComponent<PlayerMove>();
 				GameManager.Instance.MyMatchManager.AddPointTo(player.PlayerNumber.GetOpponent());
 				lastPlayerHitting = player.PlayerNumber.GetOpponent();
@@ -125,10 +131,12 @@ public class Ball : MonoBehaviour
     {
         if(smashed)
         {
+            myAudioSource.PlayOneShot(smashSound);
             myTrailRenderer.startColor = smashTrailColor;
         }
         else
         {
+            myAudioSource.PlayOneShot(hitSound);
             myTrailRenderer.startColor = hitTrailColor;
         }
         myTrailRenderer.enabled = trailActive;

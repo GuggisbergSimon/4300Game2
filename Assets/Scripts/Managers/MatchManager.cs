@@ -7,17 +7,20 @@ public class MatchManager : MonoBehaviour
 {
 	[SerializeField] private GameObject engagePositionObject;
 	[SerializeField] private playerNumber playerStarting = playerNumber.Player2;
+    [SerializeField] private AudioClip pointSound;
 
-	private Vector2 engagePosition;
+    private Vector2 engagePosition;
 	private Ball ball;
+    private AudioSource myAudioSource;
 
-	private void Start()
+    private void Start()
 	{
 		if (GameManager.Instance.InLevel)
 		{
 			engagePosition = engagePositionObject.transform.position;
 			ball = GameManager.Instance.Ball.GetComponent<Ball>();
-			Engage(playerStarting);
+            myAudioSource = GetComponent<AudioSource>();
+            Engage(playerStarting);
 		}
 	}
 
@@ -35,6 +38,7 @@ public class MatchManager : MonoBehaviour
 
 	public void AddPointTo(playerNumber player)
 	{
+        myAudioSource.PlayOneShot(pointSound);
 		GameManager.Instance.Score[player]++;
 		GameManager.Instance.UpdateUI();
 		Engage(player.GetOpponent());

@@ -12,8 +12,11 @@ public class PlayerMove : MonoBehaviour
 	[SerializeField] private float jumpThreshold = 0.1f;
 	[SerializeField] private float playerJumpSpeed = 20.0f;
 	[SerializeField] private bool playerIsJumping = false;
+    [SerializeField] private AudioClip jumpSound;
 
-	private bool enableMove = true;
+    private AudioSource myAudioSource;
+
+    private bool enableMove = true;
 
 	public bool EnableMove
 	{
@@ -47,7 +50,8 @@ public class PlayerMove : MonoBehaviour
 
 	private void Start()
 	{
-		myRacket = GetComponentInChildren<Racket>();
+        myAudioSource = GetComponent<AudioSource>();
+        myRacket = GetComponentInChildren<Racket>();
 
 		//TODO temporarily code, change it later perhaps
 		if (transform.position.x > 0)
@@ -77,6 +81,7 @@ public class PlayerMove : MonoBehaviour
 
 			if (myController.LeftStickY > jumpThreshold && !playerIsJumping)
 			{
+                myAudioSource.PlayOneShot(jumpSound);
 				playerIsJumping = true;
 				playerRigidbody2D.velocity += new Vector2(0.0f, playerJumpSpeed);
 			}
