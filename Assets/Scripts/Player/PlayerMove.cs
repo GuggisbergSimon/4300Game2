@@ -6,14 +6,15 @@ using InControl;
 
 public class PlayerMove : MonoBehaviour
 {
-	[SerializeField] private Rigidbody2D playerRigidbody2D;
 	[SerializeField] private float playerMaxSpeed = 14.0f;
 	[SerializeField] private float playerAcceleration = 70.0f;
 	[SerializeField] private float jumpThreshold = 0.1f;
 	[SerializeField] private float playerJumpSpeed = 20.0f;
 	[SerializeField] private bool playerIsJumping = false;
-    [SerializeField] private AudioClip jumpSound;
+	[SerializeField] private AudioClip jumpSound;
 
+	private Rigidbody2D playerRigidbody2D;
+	private AudioSource myAudioSource;
 	public bool EnableMove { get; set; } = true;
 	public InputDevice MyController { get; private set; }
 	public playerNumber PlayerNumber { get; private set; }
@@ -37,7 +38,8 @@ public class PlayerMove : MonoBehaviour
 	private void Start()
 	{
 		MyRacket = GetComponentInChildren<Racket>();
-
+		myAudioSource = GetComponent<AudioSource>();
+		playerRigidbody2D = GetComponent<Rigidbody2D>();
 		//TODO temporarily code, change it later perhaps
 		if (transform.position.x > 0)
 		{
@@ -66,7 +68,7 @@ public class PlayerMove : MonoBehaviour
 
 			if (MyController.LeftStickY > jumpThreshold && !playerIsJumping)
 			{
-                myAudioSource.PlayOneShot(jumpSound);
+				myAudioSource.PlayOneShot(jumpSound);
 				playerIsJumping = true;
 				playerRigidbody2D.velocity += new Vector2(0.0f, playerJumpSpeed);
 			}

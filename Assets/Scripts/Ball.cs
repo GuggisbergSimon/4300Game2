@@ -113,7 +113,10 @@ public class Ball : MonoBehaviour
 			}
 			case "Player":
 			{
+				//TODO rewrite those 3 lines (yes the sound of hittingplayer is way too strong)
+				myAudioSource.volume /= 5;
                 myAudioSource.PlayOneShot(hitPlayerSound);
+				myAudioSource.volume *= 5;
 				PlayerMove player = collisionObject.GetComponent<PlayerMove>();
 				GameManager.Instance.MyMatchManager.AddPointTo(player.PlayerNumber.GetOpponent());
 				lastPlayerHitting = player.PlayerNumber.GetOpponent();

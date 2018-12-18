@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114894689850814006}
   - component: {fileID: 82806201329119320}
   m_Layer: 9
-  m_Name: Player2 1
+  m_Name: Player2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,7 +119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4615528096230062}
-  - component: {fileID: 114672550494648260}
+  - component: {fileID: 114870207745275486}
   m_Layer: 0
   m_Name: visor
   m_TagString: Untagged
@@ -351,10 +351,11 @@ AudioSource:
   m_GameObject: {fileID: 1050372882536986}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243514394694967968, guid: d30e54ae4fbcb194ca3b6d2e0d163ccd,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -507,10 +508,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197c1ede29772c54d93c76a39e0e7594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRigidbody2D: {fileID: 50124477827308224}
-  playerMaxSpeed: 5
+  playerMaxSpeed: 14
   playerAcceleration: 70
-  jumpThreshold: 0.3
+  jumpThreshold: 0.1
   playerJumpSpeed: 20
   playerIsJumping: 0
   jumpSound: {fileID: 8300000, guid: cb1f06e66d527c54c958cad5cb8a17fd, type: 3}
