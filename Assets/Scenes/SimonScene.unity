@@ -169,15 +169,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 1792897632447296, guid: d4e52e867dea11c4595c5592e1cdb0e8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114001808445109152, guid: d4e52e867dea11c4595c5592e1cdb0e8,
-        type: 2}
-      propertyPath: amountOfChargeToSmash
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4e52e867dea11c4595c5592e1cdb0e8, type: 2}
   m_IsPrefabAsset: 0
@@ -231,15 +222,6 @@ Prefab:
     - target: {fileID: 4058011963145424, guid: b6fe2ae3314ee5942b3142dbeb885db1, type: 2}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1622572655512934, guid: b6fe2ae3314ee5942b3142dbeb885db1, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114305508118723130, guid: b6fe2ae3314ee5942b3142dbeb885db1,
-        type: 2}
-      propertyPath: amountOfChargeToSmash
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6fe2ae3314ee5942b3142dbeb885db1, type: 2}
