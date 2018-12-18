@@ -13,6 +13,13 @@ public class PlayerMove : MonoBehaviour
 	[SerializeField] private float playerJumpSpeed = 20.0f;
 	[SerializeField] private bool playerIsJumping = false;
 
+	private bool enableMove = true;
+
+	public bool EnableMove
+	{
+		get { return enableMove; }
+		set { enableMove = value; }
+	}
 
 	private InputDevice myController;
 	public InputDevice MyController => myController;
@@ -26,6 +33,16 @@ public class PlayerMove : MonoBehaviour
 	public void AssignController(InputDevice controller)
 	{
 		myController = controller;
+	}
+
+	public void SetVelocity(Vector2 velocity)
+	{
+		playerRigidbody2D.velocity = velocity;
+	}
+
+	public void SetGravityScale(float gravityScale)
+	{
+		playerRigidbody2D.gravityScale = gravityScale;
 	}
 
 	private void Start()
@@ -45,7 +62,7 @@ public class PlayerMove : MonoBehaviour
 
 	private void Update()
 	{
-		if (myController != null)
+		if (myController != null && EnableMove)
 		{
 			float horizontal = myController.LeftStickX;
 
@@ -57,7 +74,7 @@ public class PlayerMove : MonoBehaviour
 
 				playerRigidbody2D.velocity = playerNewVelocity;
 			}
-			
+
 			if (myController.LeftStickY > jumpThreshold && !playerIsJumping)
 			{
 				playerIsJumping = true;

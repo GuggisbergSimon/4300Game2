@@ -6,7 +6,7 @@ using UnityEngine;
 public class MatchManager : MonoBehaviour
 {
 	[SerializeField] private GameObject engagePositionObject;
-	[SerializeField] private playerNumber playerStarting = playerNumber.Player1;
+	[SerializeField] private playerNumber playerStarting = playerNumber.Player2;
 
 	private Vector2 engagePosition;
 	private Ball ball;

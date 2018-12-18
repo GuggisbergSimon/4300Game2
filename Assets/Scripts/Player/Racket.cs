@@ -10,7 +10,7 @@ public class Racket : MonoBehaviour
 	[SerializeField] private float hitPowerPerSecCharging = 5.0f;
 	[SerializeField] private float maximumChargingTime = 5.0f;
 	[SerializeField] private float hitDuration = 0.2f;
-
+	[SerializeField] private Vector2 aimPosition;
 	[SerializeField] private float hitSpeed = 500.0f;
 
 	//[SerializeField] private float racketCounterRotation = -0.5f;
@@ -76,11 +76,18 @@ public class Racket : MonoBehaviour
 					rotationBeforeHitting = transform.rotation;
 					RotateRacketThroughInput();
 					if ((player.MyController.RightTrigger.WasPressed || player.MyController.LeftTrigger.WasPressed) &&
-					    smashCurrentCharge >= amountOfChargeToSmash )
+					    smashCurrentCharge >= amountOfChargeToSmash && Mathf.Sign(ball.transform.position.x)
+						    .CompareTo(Mathf.Sign(player.transform.position.x)) == 0)
 					{
 						smashCurrentCharge -= amountOfChargeToSmash;
 						GameManager.Instance.UpdateUI();
 						GameManager.Instance.ChangeTimeScale(smashTimeScale);
+						player.transform.position = (Vector2) ball.transform.position - aimPosition;
+						ball.SetVelocity(Vector2.zero);
+						ball.SetGravityScale(0.0f);
+						player.SetVelocity(Vector2.zero);
+						player.SetGravityScale(0.0f);
+						player.EnableMove = false;
 						myState = RacketStates.PrepareToSmash;
 					}
 					else if (player.MyController.RightBumper.WasPressed || player.MyController.LeftBumper.WasPressed)
@@ -97,6 +104,10 @@ public class Racket : MonoBehaviour
 					if (player.MyController.RightTrigger.WasReleased || player.MyController.LeftTrigger.WasReleased)
 					{
 						GameManager.Instance.ChangeTimeScale(1.0f);
+						ball.SetGravityScale(1.0f);
+						player.SetGravityScale(4.0f);
+						player.EnableMove = true;
+						SendBall(smashPower);
 						myState = RacketStates.Smashing;
 					}
 
@@ -206,27 +217,16 @@ public class Racket : MonoBehaviour
 	{
 		if (collision.gameObject.tag == ("Ball") && !hitBall)
 		{
-			switch (myState)
+			if (myState == RacketStates.Hitting)
+				smashCurrentCharge += ball.GetSmashCharge();
+			GameManager.Instance.UpdateUI();
+			if (smashCurrentCharge > smashMaxCharge)
 			{
-				case RacketStates.Smashing:
-				{
-					SendBall(smashPower);
-					break;
-				}
-				case RacketStates.Hitting:
-				{
-					smashCurrentCharge += ball.GetSmashCharge();
-					GameManager.Instance.UpdateUI();
-					if (smashCurrentCharge > smashMaxCharge)
-					{
-						smashCurrentCharge = smashMaxCharge;
-					}
-
-					float hitPower = hitBasePower + hitPowerPerSecCharging * timeChargingHit;
-					SendBall(hitPower);
-					break;
-				}
+				smashCurrentCharge = smashMaxCharge;
 			}
+
+			float hitPower = hitBasePower + hitPowerPerSecCharging * timeChargingHit;
+			SendBall(hitPower);
 		}
 	}
 }

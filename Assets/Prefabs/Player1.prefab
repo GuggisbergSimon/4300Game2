@@ -393,13 +393,14 @@ MonoBehaviour:
   hitPowerPerSecCharging: 5
   maximumChargingTime: 5
   hitDuration: 0.2
+  aimPosition: {x: 2, y: 2}
   hitSpeed: 500
   smashMaxCharge: 100
   amountOfChargeToSmash: 25
-  smashTimeScale: 0.1
+  smashTimeScale: 0.5
   smashPower: 40
   smashSpeed: 1000
-  smashDuration: 0.1
+  smashDuration: 0.2
 --- !u!114 &114727564917952798
 MonoBehaviour:
   m_ObjectHideFlags: 1
