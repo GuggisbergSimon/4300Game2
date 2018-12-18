@@ -1,8 +1,11 @@
 fileFormatVersion: 2
-guid: 58985e36b11fc1f42a705d0052e89e0d
+guid: 8dcaf3c18409fbb448e5d05e23870476
 TextureImporter:
   fileIDToRecycleName:
-    21300000: indicator_0
+    21300000: CharacterP2_0
+    21300002: CharacterP2_1
+    21300004: CharacterP2_2
+    21300006: CharacterP2_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -61,7 +64,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -72,7 +75,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -85,13 +88,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: indicator_0
+      name: CharacterP2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 50
-        width: 251
-        height: 462
+        y: 700
+        width: 380
+        height: 1348
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -99,7 +102,67 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9220353bd3b3a0a4eb9526688b3e4088
+      spriteID: ae48e703fd4d1904d9410059c93d4e4e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterP2_1
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 700
+        width: 378
+        height: 1348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8d0a0d3c2829694b9300245620bc659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterP2_2
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 700
+        width: 380
+        height: 1348
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad6f6b1f3ddc4584490fa7c90136833c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterP2_3
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 114
+        width: 112
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07da18c23c9537248b98b171473c5676
       vertices: []
       indices: 
       edges: []
@@ -107,7 +170,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b0b7fe59b65d17046b9457c7b16c3f62
+    spriteID: 11ff869e062c39f4998c4d83730e4ea9
     vertices: []
     indices: 
     edges: []

@@ -76,10 +76,11 @@ public class Racket : MonoBehaviour
 					rotationBeforeHitting = transform.rotation;
 					RotateRacketThroughInput();
 					if ((player.MyController.RightTrigger.WasPressed || player.MyController.LeftTrigger.WasPressed) &&
-					    smashCurrentCharge >= amountOfChargeToSmash)
+					    smashCurrentCharge >= amountOfChargeToSmash )
 					{
 						smashCurrentCharge -= amountOfChargeToSmash;
 						GameManager.Instance.UpdateUI();
+						GameManager.Instance.ChangeTimeScale(smashTimeScale);
 						myState = RacketStates.PrepareToSmash;
 					}
 					else if (player.MyController.RightBumper.WasPressed || player.MyController.LeftBumper.WasPressed)
@@ -92,7 +93,6 @@ public class Racket : MonoBehaviour
 				case RacketStates.PrepareToSmash:
 				{
 					RotateRacketThroughInput();
-					GameManager.Instance.ChangeTimeScale(smashTimeScale);
 					rotationBeforeHitting = transform.rotation;
 					if (player.MyController.RightTrigger.WasReleased || player.MyController.LeftTrigger.WasReleased)
 					{

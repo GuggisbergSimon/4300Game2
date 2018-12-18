@@ -1,9 +1,11 @@
 fileFormatVersion: 2
-guid: 831223e80b9ef1e448d9f210ed3f3126
+guid: c4cdd7744ad2b844d916d567a182ce70
 TextureImporter:
   fileIDToRecycleName:
-    21300000: TennisCourt_0
-    21300002: TennisCourt_1
+    21300000: Character_0
+    21300002: Character_1
+    21300004: Character_2
+    21300006: Character_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -86,13 +88,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TennisCourt_1
+      name: Character_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1184
-        width: 2048
-        height: 738
+        y: 701
+        width: 380
+        height: 1347
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -100,19 +102,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 386a045942fa74c40be3ad53c572fc31
+      spriteID: 3a457e3cdc550474db227937a8d8653b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TennisCourt_0
+      name: Character_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 88
-        width: 2048
-        height: 954
+        x: 387
+        y: 701
+        width: 380
+        height: 1347
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,7 +122,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84bfde17bd62841498fc84e55531aa97
+      spriteID: 654f1b8f95ba6814abd61ed932020e8d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_2
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 701
+        width: 380
+        height: 1347
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b835e17a9e0835d4b8d1333df1e06679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character_3
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 116
+        width: 112
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1163d9d7ac1447b4c8bc493dfe9b4394
       vertices: []
       indices: 
       edges: []
@@ -128,7 +170,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: e95e4c9c5a25e5843b39467db6021e02
+    spriteID: c1cd5dc10bad3c6479dcf1a036d7068f
     vertices: []
     indices: 
     edges: []

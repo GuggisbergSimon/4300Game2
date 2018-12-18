@@ -3,6 +3,7 @@ guid: a708e6c8ae5b9774d82083c997a3ca2a
 TextureImporter:
   fileIDToRecycleName:
     21300000: Racket_0
+    21300002: Racket_1
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -88,10 +89,10 @@ TextureImporter:
       name: Racket_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 214
-        width: 128
-        height: 298
+        x: 20
+        y: 132
+        width: 132
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -99,7 +100,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d15eefec586d8945b055dcd72522e70
+      spriteID: 7cdffb66b821eb84ab827a43ab90ad6b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Racket_1
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 34
+        width: 251
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa8a9725f6ca704dbc71453c964bdc2
       vertices: []
       indices: 
       edges: []
