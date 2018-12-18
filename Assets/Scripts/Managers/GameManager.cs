@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using InControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -109,13 +108,6 @@ public class GameManager : MonoBehaviour
 		{
 			ChangeTimeScale(0.0f);
 			myUIManager.ToggleControllerMenu(true);
-		}
-	}
-
-	private void Update()
-	{
-		if (inLevel)
-		{
 		}
 	}
 

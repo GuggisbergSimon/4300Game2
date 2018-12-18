@@ -13,26 +13,14 @@ public class PlayerMove : MonoBehaviour
 	[SerializeField] private float playerJumpSpeed = 20.0f;
 	[SerializeField] private bool playerIsJumping = false;
 
-	private bool enableMove = true;
-
-	public bool EnableMove
-	{
-		get { return enableMove; }
-		set { enableMove = value; }
-	}
-
-	private InputDevice myController;
-	public InputDevice MyController => myController;
-
-	private playerNumber playerNumber;
-	public playerNumber PlayerNumber => playerNumber;
-
-	private Racket myRacket;
-	public Racket MyRacket => myRacket;
+	public bool EnableMove { get; set; } = true;
+	public InputDevice MyController { get; private set; }
+	public playerNumber PlayerNumber { get; private set; }
+	public Racket MyRacket { get; private set; }
 
 	public void AssignController(InputDevice controller)
 	{
-		myController = controller;
+		MyController = controller;
 	}
 
 	public void SetVelocity(Vector2 velocity)
@@ -47,24 +35,24 @@ public class PlayerMove : MonoBehaviour
 
 	private void Start()
 	{
-		myRacket = GetComponentInChildren<Racket>();
+		MyRacket = GetComponentInChildren<Racket>();
 
 		//TODO temporarily code, change it later perhaps
 		if (transform.position.x > 0)
 		{
-			playerNumber = playerNumber.Player2;
+			PlayerNumber = playerNumber.Player2;
 		}
 		else
 		{
-			playerNumber = playerNumber.Player1;
+			PlayerNumber = playerNumber.Player1;
 		}
 	}
 
 	private void Update()
 	{
-		if (myController != null && EnableMove)
+		if (MyController != null && EnableMove)
 		{
-			float horizontal = myController.LeftStickX;
+			float horizontal = MyController.LeftStickX;
 
 			if (Math.Abs(playerRigidbody2D.velocity.x) <= playerMaxSpeed)
 			{
@@ -75,7 +63,7 @@ public class PlayerMove : MonoBehaviour
 				playerRigidbody2D.velocity = playerNewVelocity;
 			}
 
-			if (myController.LeftStickY > jumpThreshold && !playerIsJumping)
+			if (MyController.LeftStickY > jumpThreshold && !playerIsJumping)
 			{
 				playerIsJumping = true;
 				playerRigidbody2D.velocity += new Vector2(0.0f, playerJumpSpeed);

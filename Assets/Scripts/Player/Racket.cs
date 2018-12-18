@@ -31,11 +31,9 @@ public class Racket : MonoBehaviour
 	private bool hitBall = false;
 	private RacketStates myState = RacketStates.Idle;
 	private float timeHitting = 0.0f;
-	private Quaternion rotationBeforeHitting;
-	public Quaternion RotationBeforeHitting => rotationBeforeHitting;
+	public Quaternion RotationBeforeHitting { get; private set; }
 	public float SmashMaxCharge => smashMaxCharge;
-	private float smashCurrentCharge = 0.0f;
-	public float SmashCurrentCharge => smashCurrentCharge;
+	public float SmashCurrentCharge { get; private set; } = 0.0f;
 	public float AmountOfChargeToSmash => amountOfChargeToSmash;
 	private float prepareToSmashDuration;
 
@@ -76,13 +74,13 @@ public class Racket : MonoBehaviour
 			{
 				case RacketStates.Idle:
 				{
-					rotationBeforeHitting = transform.rotation;
+					RotationBeforeHitting = transform.rotation;
 					RotateRacketThroughInput();
 					if ((player.MyController.RightTrigger.WasPressed || player.MyController.LeftTrigger.WasPressed) &&
-					    smashCurrentCharge >= amountOfChargeToSmash && Mathf.Sign(ball.transform.position.x)
+					    SmashCurrentCharge >= amountOfChargeToSmash && Mathf.Sign(ball.transform.position.x)
 						    .CompareTo(Mathf.Sign(player.transform.position.x)) == 0)
 					{
-						smashCurrentCharge -= amountOfChargeToSmash;
+						SmashCurrentCharge -= amountOfChargeToSmash;
 						GameManager.Instance.UpdateUI();
 						GameManager.Instance.ChangeTimeScale(smashTimeScale);
 						player.transform.position = (Vector2) ball.transform.position - aimPosition;
@@ -105,7 +103,7 @@ public class Racket : MonoBehaviour
 					RotateRacketThroughInput();
 					GameManager.Instance.ChangeTimeScale(smashTimeScale);
 					prepareToSmashDuration += Time.deltaTime;
-					rotationBeforeHitting = transform.rotation;
+					RotationBeforeHitting = transform.rotation;
 					if (player.MyController.RightTrigger.WasReleased || player.MyController.LeftTrigger.WasReleased ||
 					    (prepareToSmashDuration >= prepareToSmashMaximumDuration))
 					{
@@ -124,7 +122,7 @@ public class Racket : MonoBehaviour
 				{
 					RotateRacketThroughInput();
 					timeChargingHit += Time.deltaTime;
-					rotationBeforeHitting = transform.rotation;
+					RotationBeforeHitting = transform.rotation;
 					if (timeChargingHit > maximumChargingTime)
 					{
 						timeChargingHit = maximumChargingTime;
@@ -133,7 +131,7 @@ public class Racket : MonoBehaviour
 					if (player.MyController.RightBumper.WasReleased || player.MyController.LeftBumper.WasReleased)
 					{
 						myState = RacketStates.Hitting;
-						rotationBeforeHitting = transform.rotation;
+						RotationBeforeHitting = transform.rotation;
 					}
 
 					break;
@@ -148,7 +146,7 @@ public class Racket : MonoBehaviour
 						timeChargingHit = 0.0f;
 						hitBall = false;
 						myState = RacketStates.Idle;
-						transform.rotation = rotationBeforeHitting;
+						transform.rotation = RotationBeforeHitting;
 					}
 
 					break;
@@ -162,7 +160,7 @@ public class Racket : MonoBehaviour
 						timeHitting = 0.0f;
 						hitBall = false;
 						myState = RacketStates.Idle;
-						transform.rotation = rotationBeforeHitting;
+						transform.rotation = RotationBeforeHitting;
 					}
 
 					break;
@@ -232,11 +230,11 @@ public class Racket : MonoBehaviour
 			if (myState == RacketStates.Hitting)
 			{
 				ball.SetTrailActive(true, false);
-				smashCurrentCharge += ball.GetSmashCharge();
+				SmashCurrentCharge += ball.GetSmashCharge();
 				GameManager.Instance.UpdateUI();
-				if (smashCurrentCharge > smashMaxCharge)
+				if (SmashCurrentCharge > smashMaxCharge)
 				{
-					smashCurrentCharge = smashMaxCharge;
+					SmashCurrentCharge = smashMaxCharge;
 				}
 
 				float hitPower = hitBasePower + hitPowerPerSecCharging * timeChargingHit;
