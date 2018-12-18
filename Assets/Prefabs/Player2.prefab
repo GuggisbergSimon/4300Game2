@@ -396,6 +396,7 @@ MonoBehaviour:
   smashPower: 40
   smashSpeed: 1000
   smashDuration: 0.2
+  prepareToSmashMaximumDuration: 1.5
 --- !u!114 &114870207745275486
 MonoBehaviour:
   m_ObjectHideFlags: 1
