@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4291490193634802}
   - component: {fileID: 114098857255156458}
   m_Layer: 0
-  m_Name: 2D simple camera
+  m_Name: 2D group camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 4879542581225716}
   - component: {fileID: 114419132724452178}
   - component: {fileID: 114420620762687738}
+  - component: {fileID: 114850955724807542}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -116,7 +117,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1421915432166010}
   m_LocalRotation: {x: -0.000000011920929, y: -0, z: 1.5777222e-31, w: 1}
-  m_LocalPosition: {x: -5.9637897e-31, y: 1.8899999, z: -10}
+  m_LocalPosition: {x: 0.00000011920929, y: 0.89000005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4088428164579268}
@@ -129,7 +130,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1050958802583532}
   m_LocalRotation: {x: -0.000000011920929, y: -0, z: 1.5777222e-31, w: 1}
-  m_LocalPosition: {x: -5.9637897e-31, y: 1.8899999, z: -10}
+  m_LocalPosition: {x: 0.00000011920929, y: 0.89000005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4879542581225716}
@@ -171,7 +172,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.36133856, g: 0.36756852, b: 0.3773585, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -186,7 +187,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 6.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -310,14 +311,14 @@ MonoBehaviour:
   m_YDamping: 0
   m_ZDamping: 0
   m_ScreenX: 0.5
-  m_ScreenY: 0.5
+  m_ScreenY: 0.4
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0.1
+  m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.7
-  m_SoftZoneHeight: 0.7
+  m_SoftZoneWidth: 0
+  m_SoftZoneHeight: 0
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
@@ -330,8 +331,23 @@ MonoBehaviour:
   m_MaximumDistance: 5000
   m_MinimumFOV: 3
   m_MaximumFOV: 60
-  m_MinimumOrthoSize: 6
+  m_MinimumOrthoSize: 6.5
   m_MaximumOrthoSize: 5000
+--- !u!114 &114850955724807542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1929561896395714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!114 &114863155375277952
 MonoBehaviour:
   m_ObjectHideFlags: 1

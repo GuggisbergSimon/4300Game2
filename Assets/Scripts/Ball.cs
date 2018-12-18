@@ -28,6 +28,11 @@ public class Ball : MonoBehaviour
 		myRigidbody2D.velocity = velocity;
 	}
 
+	public void SetGravityScale(float gravityScale)
+	{
+		myRigidbody2D.gravityScale = gravityScale;
+	}
+
 	public IEnumerator Setup(Vector2 position)
 	{
 		float gravityScale = myRigidbody2D.gravityScale;
@@ -49,6 +54,7 @@ public class Ball : MonoBehaviour
 
 		myCollider2D.enabled = true;
 		myRigidbody2D.gravityScale = gravityScale;
+		Debug.Log("GravityScale " + myRigidbody2D.gravityScale);
 	}
 
 	private void Awake()
