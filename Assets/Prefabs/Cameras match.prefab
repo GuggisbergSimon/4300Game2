@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4291490193634802}
   - component: {fileID: 114098857255156458}
   m_Layer: 0
-  m_Name: 2D simple camera
+  m_Name: 2D group camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1421915432166010}
   m_LocalRotation: {x: -0.000000011920929, y: -0, z: 1.5777222e-31, w: 1}
-  m_LocalPosition: {x: -5.9637897e-31, y: 1.8899999, z: -10}
+  m_LocalPosition: {x: 0.00000011920929, y: 0.89000005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4088428164579268}
@@ -129,7 +129,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1050958802583532}
   m_LocalRotation: {x: -0.000000011920929, y: -0, z: 1.5777222e-31, w: 1}
-  m_LocalPosition: {x: -5.9637897e-31, y: 1.8899999, z: -10}
+  m_LocalPosition: {x: 0.00000011920929, y: 0.89000005, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4879542581225716}
@@ -186,7 +186,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -310,14 +310,14 @@ MonoBehaviour:
   m_YDamping: 0
   m_ZDamping: 0
   m_ScreenX: 0.5
-  m_ScreenY: 0.5
+  m_ScreenY: 0.4
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0.1
+  m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.7
-  m_SoftZoneHeight: 0.7
+  m_SoftZoneWidth: 0
+  m_SoftZoneHeight: 0
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_MaximumDistance: 5000
   m_MinimumFOV: 3
   m_MaximumFOV: 60
-  m_MinimumOrthoSize: 6
+  m_MinimumOrthoSize: 5
   m_MaximumOrthoSize: 5000
 --- !u!114 &114863155375277952
 MonoBehaviour:
