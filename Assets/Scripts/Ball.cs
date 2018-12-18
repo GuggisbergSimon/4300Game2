@@ -6,16 +6,35 @@ public class Ball : MonoBehaviour
 {
 	[SerializeField] private float timeSetupNoFall = 1.5f;
 	[SerializeField] private int setupBlinkTimes = 5;
-
-    [SerializeField] private float smashChargePerSpeed = 2.0f;
+	[SerializeField] private float smashChargePerSpeed = 2.0f;
+    [SerializeField] private Color smashTrailColor = Color.red;
+    [SerializeField] private Color hitTrailColor = Color.yellow;
+    [SerializeField] private AudioClip hitSound;
+    [SerializeField] private AudioClip smashSound;
+    [SerializeField] private AudioClip hitPlayerSound;
 
     private playerNumber lastPlayerHitting = playerNumber.Player1;
+
+	public playerNumber LastPlayerHitting
+	{
+		get { return lastPlayerHitting; }
+		set { lastPlayerHitting = value; }
+	}
+
 	private Rigidbody2D myRigidbody2D;
 	private SpriteRenderer mySpriteRenderer;
+	private Collider2D myCollider2D;
+    private TrailRenderer myTrailRenderer;
+    private AudioSource myAudioSource;
 
-	public void SetVelocity(Vector2 velocity)
+    public void SetVelocity(Vector2 velocity)
 	{
 		myRigidbody2D.velocity = velocity;
+	}
+
+	public void SetGravityScale(float gravityScale)
+	{
+		myRigidbody2D.gravityScale = gravityScale;
 	}
 
 	public IEnumerator Setup(Vector2 position)
@@ -26,6 +45,7 @@ public class Ball : MonoBehaviour
 		SetVelocity(Vector2.zero);
 		myRigidbody2D.gravityScale = 0.0f;
 		transform.position = position;
+		myCollider2D.enabled = false;
 
 		while (timer < timeSetupNoFall)
 		{
@@ -36,24 +56,33 @@ public class Ball : MonoBehaviour
 			timer += timeSetupNoFall / setupBlinkTimes;
 		}
 
+		myCollider2D.enabled = true;
 		myRigidbody2D.gravityScale = gravityScale;
+		Debug.Log("GravityScale " + myRigidbody2D.gravityScale);
 	}
 
-	private void Start()
+	private void Awake()
 	{
 		myRigidbody2D = GetComponent<Rigidbody2D>();
 		mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
-	}
+		myCollider2D = GetComponent<Collider2D>();
+        myTrailRenderer = GetComponent<TrailRenderer>();
+        myAudioSource = GetComponent<AudioSource>();
+    }
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
 		GameObject collisionObject = other.gameObject;
-
-		switch (collisionObject.tag)
+        if (myTrailRenderer.enabled)
+        {
+            myTrailRenderer.enabled = false;
+        }
+        switch (collisionObject.tag)
 		{
 			case "Border":
 			{
 				GameManager.Instance.MyMatchManager.AddPointTo(lastPlayerHitting.GetOpponent());
+				lastPlayerHitting = lastPlayerHitting.GetOpponent();
 				break;
 			}
 			case "Ground":
@@ -66,6 +95,7 @@ public class Ball : MonoBehaviour
 				else
 				{
 					GameManager.Instance.MyMatchManager.AddPointTo(lastPlayerHitting.GetOpponent());
+					lastPlayerHitting = lastPlayerHitting.GetOpponent();
 				}
 
 				break;
@@ -73,30 +103,42 @@ public class Ball : MonoBehaviour
 			case "Net":
 			{
 				GameManager.Instance.MyMatchManager.AddPointTo(lastPlayerHitting.GetOpponent());
+				lastPlayerHitting = lastPlayerHitting.GetOpponent();
 				break;
 			}
 			case "Player":
 			{
+                myAudioSource.PlayOneShot(hitPlayerSound);
 				PlayerMove player = collisionObject.GetComponent<PlayerMove>();
 				GameManager.Instance.MyMatchManager.AddPointTo(player.PlayerNumber.GetOpponent());
-				break;
-			}
-			case "Racket":
-			{
-				PlayerMove player = collisionObject.GetComponentInParent<PlayerMove>();
-				lastPlayerHitting = player.PlayerNumber;
+				lastPlayerHitting = player.PlayerNumber.GetOpponent();
 				break;
 			}
 		}
 	}
 
-   public void SetVelocity(Vector3 newVelocity)
-    {
-        myRigidbody2D.velocity = newVelocity;
-    }
+	public void SetVelocity(Vector3 newVelocity)
+	{
+		myRigidbody2D.velocity = newVelocity;
+	}
 
-    public float getSmashCharge()
+	public float GetSmashCharge()
+	{
+		return smashChargePerSpeed * myRigidbody2D.velocity.magnitude;
+	}
+
+    public void SetTrailActive(bool trailActive, bool smashed)
     {
-        return smashChargePerSpeed * myRigidbody2D.velocity.magnitude;
+        if(smashed)
+        {
+            myAudioSource.PlayOneShot(smashSound);
+            myTrailRenderer.startColor = smashTrailColor;
+        }
+        else
+        {
+            myAudioSource.PlayOneShot(hitSound);
+            myTrailRenderer.startColor = hitTrailColor;
+        }
+        myTrailRenderer.enabled = trailActive;
     }
 }

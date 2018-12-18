@@ -1,0 +1,1045 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+  m_Name: m5x7
+  m_EditorClassIdentifier: 
+  hashCode: 0
+  material: {fileID: 21983197377261782}
+  materialHashCode: 0
+  fontAssetType: 2
+  m_fontInfo:
+    Name: m5x7
+    PointSize: 33
+    Scale: 0
+    CharacterCount: 96
+    LineHeight: 29
+    Baseline: 0
+    Ascender: 22
+    CapHeight: 0
+    Descender: -4
+    CenterLine: 0
+    SuperscriptOffset: 22
+    SubscriptOffset: -4.930664
+    SubSize: 0.5
+    Underline: -4.930664
+    UnderlineThickness: 1.6435547
+    strikethrough: 6.5454545
+    strikethroughThickness: 1.6435547
+    TabWidth: 0
+    Padding: 1
+    AtlasWidth: 128
+    AtlasHeight: 128
+  atlas: {fileID: 28858123019781522}
+  m_glyphInfoList:
+  - id: 32
+    x: 1
+    y: 127
+    width: 0
+    height: 0
+    xOffset: 0
+    yOffset: 0
+    xAdvance: 10
+    scale: 1
+  - id: 33
+    x: 55
+    y: 17
+    width: 2
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 4
+    scale: 1
+  - id: 34
+    x: 111
+    y: 33
+    width: 6
+    height: 4
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 8
+    scale: 1
+  - id: 35
+    x: 115
+    y: 115
+    width: 10
+    height: 12
+    xOffset: 0
+    yOffset: 13
+    xAdvance: 12
+    scale: 1
+  - id: 36
+    x: 1
+    y: 81
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 37
+    x: 17
+    y: 97
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 38
+    x: 17
+    y: 113
+    width: 12
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 14
+    scale: 1
+  - id: 39
+    x: 119
+    y: 33
+    width: 2
+    height: 4
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 4
+    scale: 1
+  - id: 40
+    x: 101
+    y: 79
+    width: 4
+    height: 16
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 6
+    scale: 1
+  - id: 41
+    x: 107
+    y: 79
+    width: 4
+    height: 16
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 6
+    scale: 1
+  - id: 42
+    x: 111
+    y: 47
+    width: 6
+    height: 6
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 8
+    scale: 1
+  - id: 43
+    x: 59
+    y: 37
+    width: 10
+    height: 10
+    xOffset: 0
+    yOffset: 13
+    xAdvance: 12
+    scale: 1
+  - id: 44
+    x: 71
+    y: 13
+    width: 4
+    height: 4
+    xOffset: 0
+    yOffset: 3
+    xAdvance: 6
+    scale: 1
+  - id: 45
+    x: 45
+    y: 13
+    width: 10
+    height: 2
+    xOffset: 0
+    yOffset: 9
+    xAdvance: 12
+    scale: 1
+  - id: 46
+    x: 125
+    y: 67
+    width: 2
+    height: 2
+    xOffset: 0
+    yOffset: 3
+    xAdvance: 4
+    scale: 1
+  - id: 47
+    x: 59
+    y: 21
+    width: 6
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 8
+    scale: 1
+  - id: 48
+    x: 31
+    y: 113
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 49
+    x: 1
+    y: 65
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 50
+    x: 13
+    y: 81
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 51
+    x: 29
+    y: 97
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 52
+    x: 43
+    y: 113
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 53
+    x: 1
+    y: 49
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 54
+    x: 13
+    y: 65
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 55
+    x: 25
+    y: 81
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 56
+    x: 41
+    y: 97
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 57
+    x: 55
+    y: 113
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 58
+    x: 83
+    y: 39
+    width: 2
+    height: 8
+    xOffset: 0
+    yOffset: 9
+    xAdvance: 4
+    scale: 1
+  - id: 59
+    x: 113
+    y: 69
+    width: 4
+    height: 10
+    xOffset: 0
+    yOffset: 9
+    xAdvance: 6
+    scale: 1
+  - id: 60
+    x: 119
+    y: 71
+    width: 6
+    height: 10
+    xOffset: 0
+    yOffset: 13
+    xAdvance: 8
+    scale: 1
+  - id: 61
+    x: 119
+    y: 83
+    width: 8
+    height: 6
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 10
+    scale: 1
+  - id: 62
+    x: 111
+    y: 55
+    width: 6
+    height: 10
+    xOffset: 0
+    yOffset: 13
+    xAdvance: 8
+    scale: 1
+  - id: 63
+    x: 1
+    y: 33
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 64
+    x: 13
+    y: 49
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 65
+    x: 25
+    y: 65
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 66
+    x: 37
+    y: 81
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 67
+    x: 53
+    y: 97
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 68
+    x: 67
+    y: 113
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 69
+    x: 1
+    y: 17
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 70
+    x: 1
+    y: 1
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 71
+    x: 13
+    y: 33
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 72
+    x: 25
+    y: 49
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 73
+    x: 37
+    y: 65
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 74
+    x: 49
+    y: 81
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 75
+    x: 65
+    y: 97
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 76
+    x: 79
+    y: 113
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 77
+    x: 1
+    y: 113
+    width: 14
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 17
+    scale: 1
+  - id: 78
+    x: 13
+    y: 17
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 79
+    x: 13
+    y: 1
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 80
+    x: 25
+    y: 33
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 81
+    x: 37
+    y: 49
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 82
+    x: 49
+    y: 65
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 83
+    x: 61
+    y: 81
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 84
+    x: 77
+    y: 97
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 85
+    x: 91
+    y: 113
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 86
+    x: 25
+    y: 17
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 87
+    x: 1
+    y: 97
+    width: 14
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 17
+    scale: 1
+  - id: 88
+    x: 25
+    y: 1
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 89
+    x: 37
+    y: 33
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 90
+    x: 49
+    y: 49
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 91
+    x: 75
+    y: 19
+    width: 4
+    height: 16
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 6
+    scale: 1
+  - id: 92
+    x: 67
+    y: 21
+    width: 6
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 8
+    scale: 1
+  - id: 93
+    x: 77
+    y: 1
+    width: 4
+    height: 16
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 6
+    scale: 1
+  - id: 94
+    x: 59
+    y: 13
+    width: 10
+    height: 6
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 95
+    x: 87
+    y: 39
+    width: 10
+    height: 2
+    xOffset: 0
+    yOffset: 3
+    xAdvance: 12
+    scale: 1
+  - id: 96
+    x: 119
+    y: 65
+    width: 4
+    height: 4
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 6
+    scale: 1
+  - id: 97
+    x: 101
+    y: 67
+    width: 10
+    height: 10
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 12
+    scale: 1
+  - id: 98
+    x: 61
+    y: 65
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 99
+    x: 119
+    y: 103
+    width: 8
+    height: 10
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 10
+    scale: 1
+  - id: 100
+    x: 73
+    y: 81
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 101
+    x: 71
+    y: 37
+    width: 10
+    height: 10
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 12
+    scale: 1
+  - id: 102
+    x: 49
+    y: 33
+    width: 8
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 10
+    scale: 1
+  - id: 103
+    x: 89
+    y: 97
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 12
+    scale: 1
+  - id: 104
+    x: 103
+    y: 113
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 12
+    scale: 1
+  - id: 105
+    x: 113
+    y: 97
+    width: 4
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 6
+    scale: 1
+  - id: 106
+    x: 37
+    y: 13
+    width: 6
+    height: 18
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 8
+    scale: 1
+  - id: 107
+    x: 45
+    y: 17
+    width: 8
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 10
+    scale: 1
+  - id: 108
+    x: 113
+    y: 81
+    width: 4
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 6
+    scale: 1
+  - id: 109
+    x: 37
+    y: 1
+    width: 14
+    height: 10
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 17
+    scale: 1
+  - id: 110
+    x: 53
+    y: 1
+    width: 10
+    height: 10
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 12
+    scale: 1
+  - id: 111
+    x: 65
+    y: 1
+    width: 10
+    height: 10
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 12
+    scale: 1
+  - id: 112
+    x: 61
+    y: 49
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 12
+    scale: 1
+  - id: 113
+    x: 73
+    y: 65
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 12
+    scale: 1
+  - id: 114
+    x: 119
+    y: 91
+    width: 8
+    height: 10
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 10
+    scale: 1
+  - id: 115
+    x: 87
+    y: 55
+    width: 10
+    height: 10
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 12
+    scale: 1
+  - id: 116
+    x: 73
+    y: 49
+    width: 8
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 10
+    scale: 1
+  - id: 117
+    x: 99
+    y: 55
+    width: 10
+    height: 10
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 12
+    scale: 1
+  - id: 118
+    x: 87
+    y: 43
+    width: 10
+    height: 10
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 12
+    scale: 1
+  - id: 119
+    x: 85
+    y: 85
+    width: 14
+    height: 10
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 17
+    scale: 1
+  - id: 120
+    x: 99
+    y: 43
+    width: 10
+    height: 10
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 12
+    scale: 1
+  - id: 121
+    x: 101
+    y: 97
+    width: 10
+    height: 14
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 12
+    scale: 1
+  - id: 122
+    x: 99
+    y: 31
+    width: 10
+    height: 10
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 12
+    scale: 1
+  - id: 123
+    x: 85
+    y: 67
+    width: 6
+    height: 16
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 8
+    scale: 1
+  - id: 124
+    x: 83
+    y: 49
+    width: 2
+    height: 14
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 4
+    scale: 1
+  - id: 125
+    x: 93
+    y: 67
+    width: 6
+    height: 16
+    xOffset: 0
+    yOffset: 15
+    xAdvance: 8
+    scale: 1
+  - id: 126
+    x: 111
+    y: 39
+    width: 10
+    height: 6
+    xOffset: 0
+    yOffset: 11
+    xAdvance: 12
+    scale: 1
+  - id: 160
+    x: 1
+    y: 127
+    width: 0
+    height: 0
+    xOffset: 0
+    yOffset: 0
+    xAdvance: 10
+    scale: 1
+  m_kerningInfo:
+    kerningPairs: []
+  m_kerningPair:
+    m_FirstGlyph: 0
+    m_FirstGlyphAdjustments:
+      xPlacement: 0
+      yPlacement: 0
+      xAdvance: 0
+      yAdvance: 0
+    m_SecondGlyph: 0
+    m_SecondGlyphAdjustments:
+      xPlacement: 0
+      yPlacement: 0
+      xAdvance: 0
+      yAdvance: 0
+    xOffset: 0
+  fallbackFontAssets: []
+  m_CreationSettings:
+    sourceFontFileName: 
+    sourceFontFileGUID: 349da16eead7de442bfccec539346617
+    pointSizeSamplingMode: 0
+    pointSize: 33
+    padding: 1
+    packingMode: 4
+    atlasWidth: 128
+    atlasHeight: 128
+    characterSetSelectionMode: 0
+    characterSequence: 32 - 126, 160, 8203, 8230, 9633
+    referencedFontAssetGUID: 
+    referencedTextAssetGUID: 
+    fontStyle: 0
+    fontStyleModifier: 2
+    renderMode: 2
+    includeFontFeatures: 0
+  fontWeights:
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  normalStyle: 0
+  normalSpacingOffset: 0
+  boldStyle: 0.75
+  boldSpacing: 7
+  italicStyle: 35
+  tabSize: 10
+--- !u!21 &21983197377261782
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: m5x7 Material
+  m_Shader: {fileID: 4800000, guid: 128e987d567d4e2c824d754223b3f3b0, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _FaceTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 28858123019781522}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ColorMask: 15
+    - _MaskSoftnessX: 0
+    - _MaskSoftnessY: 0
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _VertexOffsetX: 0
+    - _VertexOffsetY: 0
+    m_Colors:
+    - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
+    - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!28 &28858123019781522
+Texture2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: m5x7 Atlas
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 2
+  m_Width: 128
+  m_Height: 128
+  m_CompleteImageSize: 16384
+  m_TextureFormat: 1
+  m_MipCount: 1
+  m_IsReadable: 0
+  m_StreamingMipmaps: 0
+  m_StreamingMipmapsPriority: 0
+  m_AlphaIsTransparency: 0
+  m_ImageCount: 1
+  m_TextureDimension: 2
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 0
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 0
+    m_WrapV: 0
+    m_WrapW: 0
+  m_LightmapFormat: 0
+  m_ColorSpace: 0
+  image data: 16384
+  _typelessdata: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff00000000ffffffffffff0000ffff00000000ffffffffffff00000000000000000000ffff000000000000ffffffffffff00000000ffffffffffffffff000000000000ffffffffffffffff00000000ffffffffffff00000000ffff000000000000ffff00000000ffff0000ffff000000000000ffff00000000000000000000ffff00000000ffffffffffff0000ffff00000000ffffffffffff00000000000000000000ffff000000000000ffffffffffff00000000ffffffffffffffff000000000000ffffffffffffffff00000000ffffffffffff00000000ffff000000000000ffff00000000ffff0000ffff000000000000ffff00000000ffff00000000ffff0000ffff000000000000ffff00000000ffff000000000000ffff0000000000000000ffff000000000000000000000000ffff0000ffff000000000000ffff0000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff0000ffffffffffffffffffff00000000ffff00000000ffff00000000ffff0000ffff000000000000ffff00000000ffff000000000000ffff0000000000000000ffff000000000000000000000000ffff0000ffff000000000000ffff0000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff0000ffffffffffffffffffff00000000ffff00000000ffff00000000ffff0000ffff000000000000ffff00000000ffff000000000000ffff0000ffffffffffffffffffff00000000ffffffffffffffff0000ffff000000000000ffff0000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff00000000ffff0000ffff000000000000ffff00000000ffff00000000ffff0000ffff000000000000ffff00000000ffff000000000000ffff0000ffffffffffffffffffff00000000ffffffffffffffff0000ffff000000000000ffff0000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff00000000ffff0000ffff000000000000ffff00000000ffff00000000ffff00000000ffffffff0000000000000000ffff000000000000ffff0000ffff00000000ffff00000000ffff000000000000ffff0000ffff000000000000ffff0000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff00000000ffff0000ffff000000000000ffff00000000ffff00000000ffff00000000ffffffff0000000000000000ffff000000000000ffff0000ffff00000000ffff00000000ffff000000000000ffff0000ffff000000000000ffff0000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff00000000ffff0000ffff000000000000ffff00000000ffff00000000ffff00000000ffff0000ffff000000000000ffff000000000000ffff00000000ffff0000ffff00000000ffff000000000000ffff0000ffff000000000000ffff0000ffff00000000000000000000ffff000000000000ffff0000ffffffffffffffff00000000ffffffffffffffffffff00000000ffff00000000ffff00000000ffff00000000ffff0000ffff000000000000ffff000000000000ffff00000000ffff0000ffff00000000ffff000000000000ffff0000ffff000000000000ffff0000ffff00000000000000000000ffff000000000000ffff0000ffffffffffffffff00000000ffffffffffffffffffff00000000ffff00000000ffff00000000ffff00000000ffff0000ffff000000000000ffff000000000000ffff000000000000ffffffff00000000ffff000000000000ffff0000ffff00000000ffff00000000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000000000000000ffff0000ffff000000000000ffff00000000ffff00000000ffff00000000ffff0000ffff000000000000ffff000000000000ffff000000000000ffffffff00000000ffff000000000000ffff0000ffff00000000ffff00000000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000000000000000ffff0000ffff0000000000000000ffffffff0000ffffffff0000000000000000ffff00000000000000000000ffffffffffff00000000000000000000ffff000000000000ffffffffffff00000000ffffffffffff000000000000ffff00000000000000000000ffff000000000000ffff0000ffff0000000000000000000000000000000000000000000000000000ffffffff0000ffffffff0000000000000000ffff00000000000000000000ffffffffffff00000000000000000000ffff000000000000ffffffffffff00000000ffffffffffff000000000000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffff00000000ffffffff0000ffffffff00000000ffff00000000ffffffff00000000ffffffffffff000000000000ffffffffffff000000000000ffffffffffffffff0000ffff000000000000ffff000000000000ffff0000000000000000ffffffffffff000000000000ffffffffffff000000000000ffff0000ffff00000000000000000000ffffffff0000ffffffff00000000ffff00000000ffffffff00000000ffffffffffff000000000000ffffffffffff000000000000ffffffffffffffff0000ffff000000000000ffff000000000000ffff0000000000000000ffffffffffff000000000000ffffffffffff000000000000ffff0000ffff0000000000000000ffff00000000ffff00000000ffff0000ffff00000000ffffffff0000ffff000000000000ffff0000ffff000000000000ffff0000ffff00000000000000000000ffff000000000000ffff000000000000ffff0000000000000000000000000000ffff00000000000000000000ffff00000000ffff0000ffff0000000000000000ffff00000000ffff00000000ffff0000ffff00000000ffffffff0000ffff000000000000ffff0000ffff000000000000ffff0000ffff00000000000000000000ffff000000000000ffff000000000000ffff0000000000000000000000000000ffff00000000000000000000ffff00000000ffff0000ffff0000000000000000ffff00000000ffff00000000ffff00000000ffff00000000000000000000000000000000ffff0000ffff000000000000ffff0000ffff00000000000000000000ffff00000000ffff0000000000000000ffff0000000000000000ffffffffffffffff00000000ffffffffffffffff00000000ffff0000ffff0000000000000000ffff00000000ffff00000000ffff00000000ffff00000000000000000000000000000000ffff0000ffff000000000000ffff0000ffff00000000000000000000ffff00000000ffff0000000000000000ffff0000000000000000ffffffffffffffff00000000ffffffffffffffff00000000ffff0000ffff0000000000000000ffff00000000ffff00000000ffff000000000000ffff00000000000000000000ffffffff000000000000ffffffffffff00000000ffff00000000000000000000ffffffffffff00000000000000000000ffff000000000000ffff000000000000ffff0000ffff000000000000ffff00000000ffff00000000ffffffffffff0000ffff00000000ffff00000000ffff000000000000ffff00000000000000000000ffffffff000000000000ffffffffffff00000000ffff00000000000000000000ffffffffffff00000000000000000000ffff000000000000ffff000000000000ffff0000ffff000000000000ffff00000000ffff00000000ffffffffffff0000ffff00000000ffff00000000ffff0000000000000000ffff000000000000000000000000ffff0000ffff000000000000ffff0000ffff00000000000000000000ffff00000000ffff0000000000000000ffff000000000000ffff000000000000ffff0000ffff000000000000ffff0000ffffffff000000000000000000000000ffff00000000ffff00000000ffff0000000000000000ffff000000000000000000000000ffff0000ffff000000000000ffff0000ffff00000000000000000000ffff00000000ffff0000000000000000ffff000000000000ffff000000000000ffff0000ffff000000000000ffff0000ffffffff000000000000000000000000ffff00000000000000000000ffff0000ffffffff00000000ffff0000ffff000000000000ffff0000ffff000000000000ffff00000000ffff0000000000000000ffff000000000000ffff000000000000ffff000000000000ffff000000000000ffff0000ffff000000000000ffff0000000000000000ffff0000000000000000ffff00000000000000000000ffff0000ffffffff00000000ffff0000ffff000000000000ffff0000ffff000000000000ffff00000000ffff0000000000000000ffff000000000000ffff000000000000ffff000000000000ffff000000000000ffff0000ffff000000000000ffff0000000000000000ffff0000000000000000ffff00000000000000000000ffff0000ffffffff00000000ffff00000000ffffffffffff000000000000ffffffffffff0000000000000000ffffffffffff0000ffff000000000000ffff0000ffffffffffffffffffff00000000ffffffffffff00000000ffff000000000000ffff00000000ffff0000ffff0000000000000000ffff00000000000000000000ffff0000ffffffff00000000ffff00000000ffffffffffff000000000000ffffffffffff0000000000000000ffffffffffff0000ffff000000000000ffff0000ffffffffffffffffffff00000000ffffffffffff00000000ffff000000000000ffff00000000ffff0000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff000000000000000000000000ffff000000000000ffffffffffffffffffff000000000000ffff000000000000ffffffffffffffff00000000ffffffffffff000000000000ffffffffffffffff000000000000ffffffffffffffff00000000ffffffff0000ffffffff000000000000ffff0000ffff000000000000ffff0000ffffffff00000000000000000000ffff000000000000ffffffffffffffffffff000000000000ffff000000000000ffffffffffffffff00000000ffffffffffff000000000000ffffffffffffffff000000000000ffffffffffffffff00000000ffffffff0000ffffffff000000000000ffff0000ffff000000000000ffff0000ffffffff000000000000ffffffffffffffff000000000000ffff000000000000000000000000ffff000000000000ffff000000000000ffff0000000000000000ffff000000000000000000000000ffff0000ffff000000000000ffff0000ffff00000000ffff00000000ffff0000ffff000000000000ffff0000ffff00000000ffff0000ffffffff0000ffffffffffffffff000000000000ffff000000000000000000000000ffff000000000000ffff000000000000ffff0000000000000000ffff000000000000000000000000ffff0000ffff000000000000ffff0000ffff00000000ffff00000000ffff0000ffff000000000000ffff0000ffff00000000ffff0000ffffffff000000000000ffff0000ffff000000000000ffff000000000000000000000000ffff00000000ffff000000000000ffff00000000000000000000ffff00000000000000000000ffff0000ffff000000000000ffff0000ffff00000000ffff00000000ffff0000ffff000000000000ffff0000ffff000000000000000000000000000000000000ffff0000ffff000000000000ffff000000000000000000000000ffff00000000ffff000000000000ffff00000000000000000000ffff00000000000000000000ffff0000ffff000000000000ffff0000ffff00000000ffff00000000ffff0000ffff000000000000ffff0000ffff00000000000000000000000000000000ffffffffffff00000000000000000000ffff00000000000000000000ffff00000000ffff000000000000ffff00000000000000000000ffff00000000ffffffffffff00000000ffff000000000000ffff0000ffff00000000ffff00000000ffff0000ffff000000000000ffff0000ffff00000000ffffffffffffffff00000000ffffffffffff00000000000000000000ffff00000000000000000000ffff00000000ffff000000000000ffff00000000000000000000ffff00000000ffffffffffff00000000ffff000000000000ffff0000ffff00000000ffff00000000ffff0000ffff000000000000ffff0000ffff00000000ffffffffffffffff0000ffff0000ffff0000000000000000000000000000ffff00000000000000000000ffff0000ffffffffffffffff000000000000000000000000ffff0000ffff000000000000000000000000ffffffffffffffff0000ffff00000000000000000000ffff0000ffff000000000000ffff0000ffff0000000000000000000000000000ffff0000ffff0000000000000000000000000000ffff00000000000000000000ffff0000ffffffffffffffff000000000000000000000000ffff0000ffff000000000000000000000000ffffffffffffffff0000ffff00000000000000000000ffff0000ffff000000000000ffff0000ffff00000000000000000000000000000000ffffffffffffffff0000ffff000000000000ffff00000000000000000000ffff0000ffff000000000000ffff00000000000000000000ffff0000ffff000000000000000000000000000000000000ffff000000000000000000000000000000000000ffff000000000000ffff0000ffff00000000ffffffffffffffff00000000ffffffffffffffff0000ffff000000000000ffff00000000000000000000ffff0000ffff000000000000ffff00000000000000000000ffff0000ffff000000000000000000000000000000000000ffff000000000000000000000000000000000000ffff000000000000ffff0000ffff00000000ffffffffffffffff000000000000ffff0000000000000000ffffffffffff00000000ffffffffffffffffffff0000ffffffffffffffff00000000ffffffffffffffffffff00000000ffffffffffffffff00000000000000000000ffff00000000ffffffff0000ffffffff00000000ffff000000000000ffff0000ffff000000000000000000000000000000000000ffff0000000000000000ffffffffffff00000000ffffffffffffffffffff0000ffffffffffffffff00000000ffffffffffffffffffff00000000ffffffffffffffff00000000000000000000ffff00000000ffffffff0000ffffffff00000000ffff000000000000ffff0000ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff000000000000ffff000000000000ffff0000ffff0000000000000000000000000000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff000000000000ffff000000000000ffff0000ffff0000000000000000000000000000ffff00000000ffffffffffffffffffff00000000ffffffffffff00000000ffff000000000000ffff0000ffffffffffffffffffff0000ffff000000000000ffff0000ffffffffffffffff000000000000000000000000ffff00000000ffff000000000000ffff00000000000000000000000000000000ffff000000000000ffff000000000000ffffffffffffffffffff00000000ffffffffffff00000000ffff000000000000ffff0000ffffffffffffffffffff0000ffff000000000000ffff0000ffffffffffffffff000000000000000000000000ffff00000000ffff000000000000ffff00000000000000000000000000000000ffff000000000000ffff00000000000000000000ffff000000000000ffff000000000000ffff0000ffff000000000000ffff000000000000ffff000000000000ffff000000000000ffff0000ffff000000000000ffff00000000000000000000ffff00000000ffff000000000000ffff000000000000ffffffffffffffff00000000ffff0000ffff000000000000000000000000ffff000000000000ffff000000000000ffff0000ffff000000000000ffff000000000000ffff000000000000ffff000000000000ffff0000ffff000000000000ffff00000000000000000000ffff00000000ffff000000000000ffff000000000000ffffffffffffffff00000000ffff0000ffff000000000000000000000000ffff000000000000ffff000000000000ffff0000ffffffffffffffffffff000000000000ffff000000000000ffffffffffffffff00000000ffff000000000000ffff00000000ffffffffffffffff0000ffffffff000000000000ffffffff0000ffff000000000000ffff00000000000000000000ffff00000000000000000000ffff000000000000ffff000000000000ffff0000ffffffffffffffffffff000000000000ffff000000000000ffffffffffffffff00000000ffff000000000000ffff00000000ffffffffffffffff0000ffffffff000000000000ffffffff0000ffff000000000000ffff00000000000000000000ffff00000000000000000000ffff000000000000ffff000000000000ffff0000ffff000000000000ffff000000000000ffff000000000000ffff000000000000ffff0000ffff000000000000ffff0000ffff000000000000ffff00000000ffff000000000000ffff000000000000ffffffffffffffff000000000000000000000000ffff0000000000000000ffff000000000000ffff000000000000ffff0000ffff000000000000ffff000000000000ffff000000000000ffff000000000000ffff0000ffff000000000000ffff0000ffff000000000000ffff00000000ffff000000000000ffff000000000000ffffffffffffffff000000000000000000000000ffff0000000000000000ffff000000000000ffffffffffffffff00000000ffff000000000000ffff000000000000ffff000000000000ffff000000000000ffff0000ffffffffffffffff00000000ffff000000000000ffff00000000ffff000000000000ffff000000000000000000000000ffff00000000ffff00000000000000000000000000000000ffff000000000000ffffffffffffffff00000000ffff000000000000ffff000000000000ffff000000000000ffff000000000000ffff0000ffffffffffffffff00000000ffff000000000000ffff00000000ffff000000000000ffff000000000000000000000000ffff00000000ffff0000000000000000000000000000ffffffff000000000000ffff00000000000000000000ffff000000000000ffff000000000000ffff000000000000ffff000000000000ffff0000ffff00000000000000000000ffff000000000000ffff00000000ffffffff0000ffffffff000000000000ffffffffffff000000000000000000000000ffff0000ffff00000000ffffffff000000000000ffff00000000000000000000ffff000000000000ffff000000000000ffff000000000000ffff000000000000ffff0000ffff00000000000000000000ffff000000000000ffff00000000ffffffff0000ffffffff000000000000ffffffffffff000000000000000000000000ffff0000ffff000000000000ffff0000000000000000ffffffffffff000000000000ffffffffffff00000000ffffffffffffffffffff0000ffffffffffffffff00000000ffff000000000000000000000000ffffffffffffffff000000000000000000000000000000000000000000000000000000000000000000000000ffff000000000000000000000000ffff0000000000000000ffffffffffff000000000000ffffffffffff00000000ffffffffffffffffffff0000ffffffffffffffff00000000ffff000000000000000000000000ffffffffffffffff000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffff000000000000ffffffff0000ffff0000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffff000000000000ffffffff0000ffff0000ffff00000000000000000000000000000000ffffffffffffffff000000000000ffffffffffffffff0000ffff000000000000ffff00000000ffffffff0000ffff0000ffffffffffffffffffff0000ffff0000000000000000000000000000ffffffff0000ffff00000000000000000000ffff0000ffff00000000ffffffff00000000ffff0000000000000000000000000000ffffffffffffffff000000000000ffffffffffffffff0000ffff000000000000ffff00000000ffffffff0000ffff0000ffffffffffffffffffff0000ffff0000000000000000000000000000ffffffff0000ffff00000000000000000000ffff0000ffff00000000ffffffff00000000ffff00000000000000000000000000000000000000000000ffff0000ffff00000000000000000000ffff000000000000ffff0000ffff00000000ffff00000000ffff00000000000000000000ffff000000000000000000000000ffff000000000000ffff00000000ffffffffffff00000000ffff000000000000ffff000000000000ffff0000000000000000000000000000000000000000ffff0000ffff00000000000000000000ffff000000000000ffff0000ffff00000000ffff00000000ffff00000000000000000000ffff000000000000000000000000ffff000000000000ffff00000000ffffffffffff00000000ffff000000000000ffff000000000000ffff0000000000000000000000000000000000000000ffff0000ffff0000ffffffffffff0000ffff000000000000ffff0000ffff0000ffff0000ffff00000000ffff0000000000000000ffffffffffffffff000000000000ffff000000000000ffff0000ffff00000000000000000000ffff000000000000ffff00000000ffff00000000000000000000000000000000000000000000ffff0000ffff0000ffffffffffff0000ffff000000000000ffff0000ffff0000ffff0000ffff00000000ffff0000000000000000ffffffffffffffff000000000000ffff000000000000ffff0000ffff00000000000000000000ffff000000000000ffff00000000ffff00000000000000000000000000000000000000000000ffff0000ffff0000ffff0000ffff0000ffff000000000000ffff0000ffff000000000000ffff000000000000ffff000000000000ffff000000000000ffff00000000ffff000000000000ffff00000000ffffffffffffffff0000ffff000000000000ffff0000ffff000000000000000000000000000000000000000000000000ffff0000ffff0000ffff0000ffff0000ffff000000000000ffff0000ffff000000000000ffff000000000000ffff000000000000ffff000000000000ffff00000000ffff000000000000ffff00000000ffffffffffffffff0000ffff000000000000ffff0000ffff00000000000000000000000000000000ffffffffffffffff00000000ffff0000ffffffffffff0000ffffffffffffffffffff0000ffff000000000000ffff0000000000000000ffff00000000ffff000000000000ffff0000ffffffffffffffff0000ffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffff00000000ffff0000ffffffffffff0000ffffffffffffffffffff0000ffff000000000000ffff0000000000000000ffff00000000ffff000000000000ffff0000ffffffffffffffff0000ffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff0000ffff000000000000ffff00000000000000000000ffff0000ffff000000000000ffff00000000ffff000000000000ffff000000000000ffff000000000000ffff000000000000ffff0000ffff0000ffff000000000000000000000000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff0000ffff000000000000ffff00000000000000000000ffff0000ffff000000000000ffff00000000ffff000000000000ffff000000000000ffff000000000000ffff000000000000ffff0000ffff0000ffff000000000000000000000000ffffffffffffffffffff00000000ffffffffffff00000000ffff000000000000ffff00000000ffffffffffff00000000ffffffffffffffffffff0000ffffffffffffffff000000000000ffff000000000000ffff00000000ffff0000ffff000000000000ffff0000ffff000000000000ffff0000000000000000000000000000ffffffffffffffffffff00000000ffffffffffff00000000ffff000000000000ffff00000000ffffffffffff00000000ffffffffffffffffffff0000ffffffffffffffff000000000000ffff000000000000ffff00000000ffff0000ffff000000000000ffff0000ffff000000000000ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff000000000000ffff000000000000ffff000000000000ffff0000ffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff000000000000ffff000000000000ffff000000000000ffff0000ffff00000000000000000000000000000000ffff0000000000000000ffffffffffff00000000ffff0000000000000000000000000000ffff0000000000000000ffff00000000000000000000ffff0000000000000000ffffffffffff00000000ffff0000ffff000000000000ffff00000000ffff0000ffff0000000000000000000000000000000000000000000000000000ffff0000000000000000ffffffffffff00000000ffff0000000000000000000000000000ffff0000000000000000ffff00000000000000000000ffff0000000000000000ffffffffffff00000000ffff0000ffff000000000000ffff00000000ffff0000ffff00000000000000000000000000000000000000000000000000000000000000000000ffff000000000000ffff0000ffff0000000000000000000000000000ffff0000000000000000ffff00000000000000000000ffff000000000000ffff0000000000000000000000000000ffff000000000000ffff0000ffff000000000000ffff0000000000000000ffff00000000000000000000000000000000000000000000ffff000000000000ffff0000ffff0000000000000000000000000000ffff0000000000000000ffff00000000000000000000ffff000000000000ffff0000000000000000000000000000ffff000000000000ffff0000ffff000000000000ffff0000000000000000ffff0000000000000000000000000000ffff000000000000ffff000000000000ffff0000ffffffffffffffff0000000000000000ffff0000000000000000ffff000000000000ffffffffffffffffffff0000ffffffffffffffffffff000000000000000000000000000000000000000000000000000000000000ffff0000ffff0000ffff000000000000000000000000ffff000000000000ffff000000000000ffff0000ffffffffffffffff0000000000000000ffff0000000000000000ffff000000000000ffffffffffffffffffff0000ffffffffffffffffffff000000000000000000000000000000000000000000000000000000000000ffff0000ffff0000ffff0000000000000000000000000000ffff00000000ffff0000ffffffffffff0000ffff000000000000ffff00000000ffff0000ffff000000000000ffff00000000000000000000ffff000000000000ffff000000000000ffff0000ffff0000ffffffffffffffffffff0000ffffffffffffffffffff00000000ffff0000000000000000000000000000000000000000ffff00000000ffff0000ffffffffffff0000ffff000000000000ffff00000000ffff0000ffff000000000000ffff00000000000000000000ffff000000000000ffff000000000000ffff0000ffff0000ffffffffffffffffffff0000ffffffffffffffffffff00000000ffff00000000000000000000000000000000000000000000ffff0000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff0000ffffffffffffffff000000000000ffff0000000000000000ffffffffffff00000000000000000000000000000000000000000000ffff00000000000000000000000000000000000000000000000000000000000000000000ffff0000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff0000ffffffffffffffff000000000000ffff0000000000000000ffffffffffff00000000000000000000000000000000000000000000ffff0000000000000000000000000000000000000000000000000000ffff000000000000ffff0000ffff000000000000ffff0000ffff000000000000ffff0000ffff000000000000ffff00000000ffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff000000000000ffff0000ffff0000ffff0000000000000000ffff000000000000ffff0000ffff000000000000ffff0000ffff000000000000ffff0000ffff000000000000ffff00000000ffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff000000000000ffff0000ffff0000ffff00000000000000000000ffffffffffff000000000000ffffffffffff00000000ffffffffffffffff00000000ffff000000000000ffff000000000000ffffffff0000ffff00000000000000000000ffff0000ffffffff0000000000000000000000000000000000000000000000000000ffff00000000ffff0000ffff0000ffff00000000000000000000ffffffffffff000000000000ffffffffffff00000000ffffffffffffffff00000000ffff000000000000ffff000000000000ffffffff0000ffff00000000000000000000ffff0000ffffffff0000000000000000000000000000000000000000000000000000ffff00000000ffff0000ffff0000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff0000ffff00000000000000000000000000000000000000000000ffffffffffffffffffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff0000ffff00000000000000000000000000000000000000000000ffffffffffffffffffff00000000000000000000000000000000000000000000ffffffffffffffff0000ffff000000000000ffff000000000000ffff000000000000ffffffff00000000ffff00000000ffff0000ffff00000000ffff000000000000ffff00000000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffff0000ffff000000000000ffff000000000000ffff000000000000ffffffff00000000ffff00000000ffff0000ffff00000000ffff000000000000ffff00000000ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff000000000000ffff00000000ffff0000ffff0000000000000000ffff0000ffff0000ffff00000000000000000000ffff000000000000ffff00000000ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff000000000000ffff00000000ffff0000ffff0000000000000000ffff0000ffff0000ffff00000000000000000000ffff000000000000ffff00000000ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff000000000000ffff0000ffffffff000000000000ffff00000000ffff000000000000ffff00000000ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff000000000000ffff0000ffffffff000000000000ffff00000000ffff000000000000ffff00000000ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff000000000000ffff0000ffff0000ffff00000000ffff000000000000ffff0000ffff000000000000ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff000000000000ffff0000ffff0000ffff00000000ffff000000000000ffff0000ffff000000000000ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffff00000000ffff000000000000ffff0000ffff000000000000ffff000000000000ffff0000ffff00000000ffff0000ffff000000000000ffff0000ffff000000000000ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffff00000000ffff000000000000ffff0000ffff000000000000ffff000000000000ffff0000ffff00000000ffff0000ffff000000000000ffff0000ffff000000000000ffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff00000000ffff00000000ffff000000000000ffff000000000000ffff0000ffff0000000000000000ffff000000000000000000000000000000000000ffffffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff00000000ffff00000000ffff000000000000ffff000000000000ffff0000ffff0000000000000000ffff000000000000000000000000000000000000ffffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffff0000ffffffffffff000000000000ffff000000000000ffff00000000ffffffff0000ffff0000000000000000ffff0000ffff000000000000ffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffff0000ffffffffffff000000000000ffff000000000000ffff00000000ffffffff0000ffff0000000000000000ffff0000ffff000000000000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff0000ffff00000000ffff00000000ffffffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff0000ffff00000000ffff00000000ffffffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff000000000000000000000000ffffffffffff00000000ffff000000000000ffff000000000000ffff0000ffffffffffffffffffff0000000000000000ffff0000000000000000ffff00000000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff000000000000000000000000ffffffffffff00000000ffff000000000000ffff000000000000ffff0000ffffffffffffffffffff0000000000000000ffff0000000000000000ffff00000000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff000000000000ffff00000000ffff0000ffff00000000ffff00000000ffff00000000ffff0000ffff000000000000ffff00000000ffffffffffff000000000000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff000000000000ffff00000000ffff0000ffff00000000ffff00000000ffff00000000ffff0000ffff000000000000ffff00000000ffffffffffff000000000000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff000000000000ffff000000000000ffff000000000000ffff00000000ffff00000000ffff0000ffff000000000000ffff0000ffff000000000000ffff00000000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff000000000000ffff000000000000ffff000000000000ffff00000000ffff00000000ffff0000ffff000000000000ffff0000ffff000000000000ffff00000000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffff00000000ffff000000000000ffff00000000ffff0000ffff00000000ffff00000000ffff00000000ffff0000ffff000000000000ffff0000ffff000000000000ffff00000000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffff00000000ffff000000000000ffff00000000ffff0000ffff00000000ffff00000000ffff00000000ffff0000ffff000000000000ffff0000ffff000000000000ffff00000000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff0000ffffffff0000ffff00000000ffff0000ffffffff00000000ffff0000ffff000000000000ffff00000000ffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffff00000000000000000000ffff000000000000ffff0000ffff000000000000ffff0000ffffffff0000ffff00000000ffff0000ffffffff00000000ffff0000ffff000000000000ffff00000000ffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffff00000000ffffffffffff00000000ffff000000000000ffff0000ffff0000ffffffffffffffff00000000ffff0000ffffffff000000000000ffffffffffff00000000ffffffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffffffffff00000000ffffffffffff00000000ffff000000000000ffff0000ffff0000ffffffffffffffff00000000ffff0000ffffffff000000000000ffffffffffff00000000ffffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_StreamData:
+    offset: 0
+    size: 0
+    path: 

@@ -18,8 +18,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - invisible wall
+  - player
   - 
   - 
   - 
@@ -45,6 +45,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2823587333
+    locked: 0
+  - name: Gameplay
+    uniqueID: 841205321
     locked: 0
   - name: UI
     uniqueID: 1882120845
